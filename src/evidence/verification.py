@@ -18,14 +18,28 @@ def _normalize_product(value: str) -> str:
     return "".join(character for character in value.lower() if character.isalnum())
 
 
-def _image_order_match(detected_product: str, order: OrderRecord) -> float:
-    detected = _normalize_product(detected_product)
+def _image_order_match(
+    detected_product: str,
+    order: OrderRecord,
+) -> float:
+    detected = _normalize_product(detected_product or "")
+
+    if not detected:
+        return 0.0
+
     product = _normalize_product(order.product_name)
     category = _normalize_product(order.product_category)
+
     if detected == product:
         return 1.0
-    if detected == category or category in detected or detected in product:
+
+    if (
+        detected == category
+        or category in detected
+        or detected in product
+    ):
         return 0.8
+
     return 0.0
 
 
@@ -101,7 +115,10 @@ def _policy_eligibility(
         return False, "Submitted image evidence is not usable."
     if not case.get("damage_detected", False):
         return False, "No visible damage was detected."
-    if case.get("claim_image_consistency", 1.0) < 0.5:
+    consistency = case.get("claim_image_consistency")
+    if consistency is None:
+        return False, "Claim-image consistency evidence is missing."
+    if consistency < 0.5:
         return False, "Image evidence does not sufficiently support the claim."
     if not _damage_type_is_covered(case.get("damage_type", ""), policy):
         return False, "Damage type is not covered by the retrieved policy."
@@ -118,7 +135,10 @@ def _completeness(case: dict[str, Any], has_order: bool, has_policy: bool) -> fl
         bool(case.get("damage_type")),
         bool(case.get("request_date")),
         case.get("image_usable", True) is True,
-        case.get("claim_image_consistency", 1.0) >= 0.5,
+        (
+            case.get("claim_image_consistency") is not None
+            and case["claim_image_consistency"] >= 0.5
+        ),
         has_order,
         has_policy,
     )

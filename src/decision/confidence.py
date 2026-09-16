@@ -30,7 +30,9 @@ def calculate_evidence_confidence(member1, member2, member3):
         "image_quality": member1.image_quality,
         "damage_confidence": member2.damage_confidence,
         "claim_image_consistency": (
-            member2.claim_image_consistency
+            0.0
+            if member2.claim_image_consistency is None
+            else member2.claim_image_consistency
         ),
         "image_order_consistency": (
             member3.image_order_consistency
