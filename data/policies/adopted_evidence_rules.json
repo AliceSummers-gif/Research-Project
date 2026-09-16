@@ -1,0 +1,74 @@
+[
+  {
+    "rule_id": "RULE-TEXT-ORDER-001",
+    "name": "Text and order evidence requirements",
+    "category": "text_order_verification",
+    "source_type": "official_retailer_policy",
+    "source_organisation": "Cotton On Australia",
+    "source_url": "https://help.cottonon.com/hc/en-us/articles/900002180866-My-order-has-arrived-damaged-or-faulty",
+    "accessed_date": "2026-09-16",
+    "requirements": {
+      "order_id_required": true,
+      "claim_description_required": true,
+      "proof_of_purchase_required": true
+    },
+    "project_fields": [
+      "order_valid",
+      "product_name",
+      "product_category",
+      "refund_amount"
+    ],
+    "summary": "A damaged-item request should identify the order and describe the affected product. The system checks these details against the original order record."
+  },
+  {
+    "rule_id": "RULE-IMAGE-002",
+    "name": "Image and damage evidence requirements",
+    "category": "image_evidence_verification",
+    "source_type": "official_retailer_policy",
+    "source_organisation": "Cotton On Australia and ASOS Australia",
+    "source_url": "https://www.asos.com/au/customer-care/order-issues/somethings-wrong-with-my-item-what-do-i-do/",
+    "supporting_source_url": "https://help.cottonon.com/hc/en-us/articles/900002180866-My-order-has-arrived-damaged-or-faulty",
+    "accessed_date": "2026-09-16",
+    "requirements": {
+      "damage_photo_required": true,
+      "image_must_show_product": true,
+      "image_must_show_claimed_damage": true,
+      "returned_item_may_be_inspected": true
+    },
+    "project_fields": [
+      "image_quality",
+      "image_usable",
+      "damage_detected",
+      "damage_confidence",
+      "claim_image_consistency",
+      "image_order_match"
+    ],
+    "summary": "The submitted image should clearly show the product and claimed fault. AI scores are project-defined measurements and are not retailer policy thresholds."
+  },
+  {
+    "rule_id": "RULE-AUTO-003",
+    "name": "Automatic decision baseline",
+    "category": "automatic_decision_thresholds",
+    "source_type": "project_defined_research_baseline",
+    "source_organisation": "Risk-Aware Multimodal AI Refund System project",
+    "source_url": null,
+    "accessed_date": "2026-09-16",
+    "requirements": {
+      "order_valid": true,
+      "policy_eligible": true,
+      "image_usable": true,
+      "damage_detected": true,
+      "minimum_claim_image_consistency": 0.5,
+      "high_evidence_confidence_minimum": 0.8,
+      "auto_refund_maximum_risk": "LOW"
+    },
+    "decision_matrix": {
+      "HIGH_LOW": "AUTO_REFUND",
+      "MEDIUM_LOW": "REQUEST_MORE_EVIDENCE",
+      "HIGH_MEDIUM": "HUMAN_REVIEW",
+      "HIGH_HIGH": "HUMAN_REVIEW",
+      "LOW_HIGH": "HUMAN_REVIEW"
+    },
+    "summary": "Automatic approval is limited to valid and policy-eligible cases with usable evidence, high evidence confidence and low refund risk. These thresholds are a project baseline that must be evaluated, not an official retailer rule."
+  }
+]

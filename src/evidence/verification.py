@@ -8,6 +8,12 @@ from src.evidence.order import retrieve_order
 from src.evidence.rag import retrieve_best_policy
 
 
+DAMAGE_TYPE_POLICY_ALIASES = {
+    "hole_or_tear": {"hole_or_tear", "hole", "tear"},
+    "stain_or_spot": {"stain_or_spot", "stain", "spot"},
+}
+
+
 def _normalize_product(value: str) -> str:
     return "".join(character for character in value.lower() if character.isalnum())
 
@@ -25,6 +31,14 @@ def _image_order_match(detected_product: str, order: OrderRecord) -> float:
 
 def _days_since_purchase(order: OrderRecord, request_date: str) -> int:
     return (date.fromisoformat(request_date) - date.fromisoformat(order.purchase_date)).days
+
+
+def _damage_type_is_covered(damage_type: str, policy: RetrievedPolicy) -> bool:
+    """Match canonical detector labels with legacy policy vocabulary."""
+
+    normalized = damage_type.lower()
+    accepted_labels = DAMAGE_TYPE_POLICY_ALIASES.get(normalized, {normalized})
+    return bool(accepted_labels.intersection(policy.eligible_damage_types))
 
 
 def verify_case(case: dict[str, Any]) -> VerifiedEvidence:
@@ -89,7 +103,7 @@ def _policy_eligibility(
         return False, "No visible damage was detected."
     if case.get("claim_image_consistency", 1.0) < 0.5:
         return False, "Image evidence does not sufficiently support the claim."
-    if case.get("damage_type", "").lower() not in policy.eligible_damage_types:
+    if not _damage_type_is_covered(case.get("damage_type", ""), policy):
         return False, "Damage type is not covered by the retrieved policy."
     if image_match < 0.8:
         return False, "The detected product does not match the order."
