@@ -48,6 +48,24 @@ def make_decision(
             "Refund-policy eligibility is not confirmed.",
         )
 
+    if member2.evidence_quality in {"poor", "unusable"}:
+        return (
+            "REQUEST_MORE_EVIDENCE",
+            "The damage module reports insufficient image evidence.",
+        )
+
+    if member2.needs_human_review:
+        return (
+            "HUMAN_REVIEW",
+            "The damage module requires human review.",
+        )
+
+    if member2.claim_image_consistency is None:
+        return (
+            "REQUEST_MORE_EVIDENCE",
+            "Claim-image consistency evidence is missing.",
+        )
+
     if not member2.damage_detected:
         return (
             "REQUEST_MORE_EVIDENCE",

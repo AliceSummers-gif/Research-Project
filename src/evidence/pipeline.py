@@ -22,7 +22,7 @@ def build_evidence_chain(
         raise ValueError("CaseInput and member outputs have different case_id values.")
 
     order = retrieve_order(case_input.order_id)
-    detected_product = member2.detected_product or member1.product or ""
+    detected_product = member2.detected_product or ""
     verification_input = {
         "case_id": case_input.case_id,
         "order_id": case_input.order_id,

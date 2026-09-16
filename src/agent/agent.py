@@ -1,4 +1,6 @@
-"""Student 4 Week 5 rule-based confidence and decision Agent."""
+"""Student 4 Agent with rule-based and ML confidence modes."""
+
+from typing import Literal
 
 from src.common.schemas import (
     Member1Output,
@@ -18,8 +20,11 @@ def run_agent(
     member1: Member1Output,
     member2: Member2Output,
     member3: Member3Output,
+    *,
+    confidence_method: Literal["rule", "ml"] = "rule",
+    model=None,
 ) -> Member4Output:
-    """Combine Members 1–3 outputs into the final refund decision."""
+    """Combine member outputs using rule-based or ML confidence."""
 
     case_ids = {
         member1.case_id,
@@ -32,11 +37,28 @@ def run_agent(
             "Member outputs have different case_id values."
         )
 
-    evidence_confidence = calculate_evidence_confidence(
-        member1,
-        member2,
-        member3,
-    )
+    if confidence_method not in {"rule", "ml"}:
+        raise ValueError(
+            "confidence_method must be 'rule' or 'ml'."
+        )
+
+    if confidence_method == "rule":
+        evidence_confidence = calculate_evidence_confidence(
+            member1,
+            member2,
+            member3,
+        )
+    else:
+        from src.decision.ml_confidence import (
+            predict_evidence_confidence,
+        )
+
+        evidence_confidence = predict_evidence_confidence(
+            member1,
+            member2,
+            member3,
+            model=model,
+        )
 
     confidence_label = get_confidence_label(
         evidence_confidence
