@@ -69,14 +69,25 @@ if selected == 'New application':
     order = by_id[order_id]
     st.caption(f"Amount: {order['price']} · Purchased: {order['purchase_date']}")
     with st.form('create_refund'):
-        requested = st.date_input('Request date', value=date.today())
+        st.write('Request date')
+        today = date.today()
+        months = ('January', 'February', 'March', 'April', 'May', 'June',
+                  'July', 'August', 'September', 'October', 'November', 'December')
+        year_col, month_col, day_col = st.columns(3)
+        requested_year = year_col.number_input('Year', min_value=1900, max_value=2100,
+                                               value=today.year, step=1)
+        requested_month = month_col.selectbox('Month', list(range(1, 13)),
+                                              index=today.month - 1,
+                                              format_func=lambda m: months[m - 1])
+        requested_day = day_col.selectbox('Day', list(range(1, 32)), index=today.day - 1)
+        st.caption('Use a valid calendar date, for example 15 August 2026.')
         st.caption('For historical demonstrations, select the actual demonstration date. Policy checks use this date.')
         claim = st.text_area('Describe the product, damage and location in English', max_chars=3000)
         uploaded = st.file_uploader('Product photo (JPEG / PNG, maximum 8 MB)', type=['jpg', 'jpeg', 'png'])
         visible = st.selectbox('Is the claimed area visible?', ['Please select', 'Yes', 'No'])
         submitted = st.form_submit_button('Submit and analyze')
     if submitted:
-        act(lambda: service.create({'order_id': order_id, 'request_date': requested.isoformat(),
+        act(lambda: service.create({'order_id': order_id, 'request_date': date(int(requested_year), requested_month, requested_day).isoformat(),
                                     'claim_text': claim, **photo_payload(uploaded, visible)}))
 else:
     record = service.get(selected)
