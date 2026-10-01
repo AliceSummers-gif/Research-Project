@@ -1,0 +1,139 @@
+{
+  "experiment_name": "Member 1 Week 5 Image Quality Experiments",
+  "total_conditions": 7,
+  "source_manifest": "data/member1/week5/degradation_manifest.csv",
+  "order_id": "ORD003",
+  "request_date": "2026-08-15",
+  "claim_text": "The t-shirt has a stain on the front.",
+  "decision_counts": {
+    "HUMAN_REVIEW": 2,
+    "REQUEST_MORE_EVIDENCE": 5
+  },
+  "damage_type_counts": {
+    "stain_or_spot": 2,
+    "uncertain": 5
+  },
+  "evidence_quality_counts": {
+    "good": 2,
+    "unusable": 5
+  },
+  "usability_counts": {
+    "True": 2,
+    "False": 5
+  },
+  "confidence_label_counts": {
+    "MEDIUM": 2,
+    "LOW": 5
+  },
+  "damage_confidence_by_condition": {
+    "clear": 0.919710620070234,
+    "slight_blur": 0.942512544064662,
+    "severe_blur": 0.0,
+    "dark": 0.0,
+    "overexposed": 0.0,
+    "cropped": 0.0,
+    "occluded": 0.0
+  },
+  "evidence_confidence_by_condition": {
+    "clear": 0.53,
+    "slight_blur": 0.53,
+    "severe_blur": 0.17,
+    "dark": 0.17,
+    "overexposed": 0.17,
+    "cropped": 0.17,
+    "occluded": 0.17
+  },
+  "conditions": [
+    {
+      "case_id": "W5_IMG_001",
+      "condition": "clear",
+      "member1_image_quality": 1.0,
+      "member1_image_usable": true,
+      "raw_blur_label": "clear",
+      "raw_lighting_label": "normal",
+      "member2_damage_type": "stain_or_spot",
+      "member2_damage_confidence": 0.919710620070234,
+      "evidence_confidence": 0.53,
+      "confidence_label": "MEDIUM",
+      "decision": "HUMAN_REVIEW"
+    },
+    {
+      "case_id": "W5_IMG_002",
+      "condition": "slight_blur",
+      "member1_image_quality": 1.0,
+      "member1_image_usable": true,
+      "raw_blur_label": "clear",
+      "raw_lighting_label": "normal",
+      "member2_damage_type": "stain_or_spot",
+      "member2_damage_confidence": 0.942512544064662,
+      "evidence_confidence": 0.53,
+      "confidence_label": "MEDIUM",
+      "decision": "HUMAN_REVIEW"
+    },
+    {
+      "case_id": "W5_IMG_003",
+      "condition": "severe_blur",
+      "member1_image_quality": 0.0,
+      "member1_image_usable": false,
+      "raw_blur_label": "severely_blurred",
+      "raw_lighting_label": "normal",
+      "member2_damage_type": "uncertain",
+      "member2_damage_confidence": 0.0,
+      "evidence_confidence": 0.17,
+      "confidence_label": "LOW",
+      "decision": "REQUEST_MORE_EVIDENCE"
+    },
+    {
+      "case_id": "W5_IMG_004",
+      "condition": "dark",
+      "member1_image_quality": 0.0,
+      "member1_image_usable": false,
+      "raw_blur_label": "clear",
+      "raw_lighting_label": "dark",
+      "member2_damage_type": "uncertain",
+      "member2_damage_confidence": 0.0,
+      "evidence_confidence": 0.17,
+      "confidence_label": "LOW",
+      "decision": "REQUEST_MORE_EVIDENCE"
+    },
+    {
+      "case_id": "W5_IMG_005",
+      "condition": "overexposed",
+      "member1_image_quality": 0.0,
+      "member1_image_usable": false,
+      "raw_blur_label": "clear",
+      "raw_lighting_label": "overexposed",
+      "member2_damage_type": "uncertain",
+      "member2_damage_confidence": 0.0,
+      "evidence_confidence": 0.17,
+      "confidence_label": "LOW",
+      "decision": "REQUEST_MORE_EVIDENCE"
+    },
+    {
+      "case_id": "W5_IMG_006",
+      "condition": "cropped",
+      "member1_image_quality": 0.0,
+      "member1_image_usable": false,
+      "raw_blur_label": "clear",
+      "raw_lighting_label": "normal",
+      "member2_damage_type": "uncertain",
+      "member2_damage_confidence": 0.0,
+      "evidence_confidence": 0.17,
+      "confidence_label": "LOW",
+      "decision": "REQUEST_MORE_EVIDENCE"
+    },
+    {
+      "case_id": "W5_IMG_007",
+      "condition": "occluded",
+      "member1_image_quality": 0.0,
+      "member1_image_usable": false,
+      "raw_blur_label": "clear",
+      "raw_lighting_label": "normal",
+      "member2_damage_type": "uncertain",
+      "member2_damage_confidence": 0.0,
+      "evidence_confidence": 0.17,
+      "confidence_label": "LOW",
+      "decision": "REQUEST_MORE_EVIDENCE"
+    }
+  ]
+}

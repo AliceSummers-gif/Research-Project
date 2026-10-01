@@ -1,0 +1,8 @@
+case_id,condition,image_path,relevant_region_visible,description
+W5_IMG_001,clear,data/member1/week5/images/spot_004_clear.jpg,true,Original clear baseline image.
+W5_IMG_002,slight_blur,data/member1/week5/images/spot_004_slight_blur.jpg,true,Mild Gaussian blur.
+W5_IMG_003,severe_blur,data/member1/week5/images/spot_004_severe_blur.jpg,true,Strong Gaussian blur.
+W5_IMG_004,dark,data/member1/week5/images/spot_004_dark.jpg,true,Low-light version.
+W5_IMG_005,overexposed,data/member1/week5/images/spot_004_overexposed.jpg,true,Overexposed bright version.
+W5_IMG_006,cropped,data/member1/week5/images/spot_004_cropped.jpg,false,Cropped version; relevant region treated as not visible.
+W5_IMG_007,occluded,data/member1/week5/images/spot_004_occluded.jpg,false,Occluded version; relevant region treated as not visible.
