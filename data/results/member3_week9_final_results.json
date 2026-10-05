@@ -1,0 +1,329 @@
+{
+  "evaluation_name": "Member 3 Week 9 final retrieval and evidence evaluation",
+  "dataset_type": "synthetic_labelled_evaluation",
+  "retrieval_comparison": {
+    "baseline": {
+      "evaluation_name": "Member 3 policy retrieval (lexical)",
+      "retrieval_strategy": "lexical",
+      "dataset_type": "synthetic_labelled_evaluation",
+      "total_cases": 60,
+      "top_1_accuracy": 0.6166666666666667,
+      "hit_rate_at_3": 0.95,
+      "mean_reciprocal_rank": 0.7638888888888892,
+      "per_policy_top_1_accuracy": {
+        "POL-DAMAGE-30": 1.0,
+        "POL-FINAL-SALE": 0.4,
+        "POL-NO-DAMAGE": 0.26666666666666666,
+        "POL-WRONG-ITEM-14": 0.8
+      },
+      "top_1_failures": [
+        {
+          "case_id": "M3_W8_016",
+          "query": "I ordered a jacket but received a shirt.",
+          "expected_policy_id": "POL-WRONG-ITEM-14",
+          "retrieved_policy_ids": [
+            "POL-DAMAGE-30",
+            "POL-NO-DAMAGE",
+            "POL-WRONG-ITEM-14"
+          ]
+        },
+        {
+          "case_id": "M3_W8_022",
+          "query": "This delivered product belongs to a different order.",
+          "expected_policy_id": "POL-WRONG-ITEM-14",
+          "retrieved_policy_ids": [
+            "POL-DAMAGE-30",
+            "POL-WRONG-ITEM-14",
+            "POL-NO-DAMAGE"
+          ]
+        },
+        {
+          "case_id": "M3_W8_030",
+          "query": "The package contains a product mismatch.",
+          "expected_policy_id": "POL-WRONG-ITEM-14",
+          "retrieved_policy_ids": [
+            "POL-DAMAGE-30",
+            "POL-WRONG-ITEM-14",
+            "POL-NO-DAMAGE"
+          ]
+        },
+        {
+          "case_id": "M3_W8_032",
+          "query": "I cannot identify a hole, tear or stain in the image.",
+          "expected_policy_id": "POL-NO-DAMAGE",
+          "retrieved_policy_ids": [
+            "POL-DAMAGE-30",
+            "POL-NO-DAMAGE",
+            "POL-WRONG-ITEM-14"
+          ]
+        },
+        {
+          "case_id": "M3_W8_033",
+          "query": "The garment appears clean and undamaged.",
+          "expected_policy_id": "POL-NO-DAMAGE",
+          "retrieved_policy_ids": [
+            "POL-WRONG-ITEM-14",
+            "POL-DAMAGE-30",
+            "POL-NO-DAMAGE"
+          ]
+        },
+        {
+          "case_id": "M3_W8_034",
+          "query": "There is no damage visible on the product.",
+          "expected_policy_id": "POL-NO-DAMAGE",
+          "retrieved_policy_ids": [
+            "POL-DAMAGE-30",
+            "POL-NO-DAMAGE",
+            "POL-WRONG-ITEM-14"
+          ]
+        },
+        {
+          "case_id": "M3_W8_035",
+          "query": "The clothing looks intact in every submitted photo.",
+          "expected_policy_id": "POL-NO-DAMAGE",
+          "retrieved_policy_ids": [
+            "POL-DAMAGE-30",
+            "POL-NO-DAMAGE",
+            "POL-WRONG-ITEM-14"
+          ]
+        },
+        {
+          "case_id": "M3_W8_036",
+          "query": "No defect can be seen in the evidence.",
+          "expected_policy_id": "POL-NO-DAMAGE",
+          "retrieved_policy_ids": [
+            "POL-DAMAGE-30",
+            "POL-NO-DAMAGE",
+            "POL-WRONG-ITEM-14"
+          ]
+        },
+        {
+          "case_id": "M3_W8_037",
+          "query": "The jacket is not damaged according to the image.",
+          "expected_policy_id": "POL-NO-DAMAGE",
+          "retrieved_policy_ids": [
+            "POL-DAMAGE-30",
+            "POL-NO-DAMAGE",
+            "POL-WRONG-ITEM-14"
+          ]
+        },
+        {
+          "case_id": "M3_W8_038",
+          "query": "The claim says damage but the product looks normal.",
+          "expected_policy_id": "POL-NO-DAMAGE",
+          "retrieved_policy_ids": [
+            "POL-DAMAGE-30",
+            "POL-NO-DAMAGE",
+            "POL-WRONG-ITEM-14"
+          ]
+        },
+        {
+          "case_id": "M3_W8_039",
+          "query": "The fabric has no visible hole or mark.",
+          "expected_policy_id": "POL-NO-DAMAGE",
+          "retrieved_policy_ids": [
+            "POL-DAMAGE-30",
+            "POL-NO-DAMAGE",
+            "POL-WRONG-ITEM-14"
+          ]
+        },
+        {
+          "case_id": "M3_W8_041",
+          "query": "No stain is present in the supplied photograph.",
+          "expected_policy_id": "POL-NO-DAMAGE",
+          "retrieved_policy_ids": [
+            "POL-DAMAGE-30",
+            "POL-NO-DAMAGE",
+            "POL-WRONG-ITEM-14"
+          ]
+        },
+        {
+          "case_id": "M3_W8_042",
+          "query": "The shirt appears intact without a tear.",
+          "expected_policy_id": "POL-NO-DAMAGE",
+          "retrieved_policy_ids": [
+            "POL-DAMAGE-30",
+            "POL-NO-DAMAGE",
+            "POL-WRONG-ITEM-14"
+          ]
+        },
+        {
+          "case_id": "M3_W8_044",
+          "query": "Nothing in the image indicates product damage.",
+          "expected_policy_id": "POL-NO-DAMAGE",
+          "retrieved_policy_ids": [
+            "POL-DAMAGE-30",
+            "POL-WRONG-ITEM-14",
+            "POL-NO-DAMAGE"
+          ]
+        },
+        {
+          "case_id": "M3_W8_046",
+          "query": "The item was marked final sale when I purchased it.",
+          "expected_policy_id": "POL-FINAL-SALE",
+          "retrieved_policy_ids": [
+            "POL-WRONG-ITEM-14",
+            "POL-DAMAGE-30",
+            "POL-FINAL-SALE"
+          ]
+        },
+        {
+          "case_id": "M3_W8_047",
+          "query": "I want to return a final-sale product.",
+          "expected_policy_id": "POL-FINAL-SALE",
+          "retrieved_policy_ids": [
+            "POL-DAMAGE-30",
+            "POL-FINAL-SALE",
+            "POL-NO-DAMAGE"
+          ]
+        },
+        {
+          "case_id": "M3_W8_050",
+          "query": "The product is a sale item with a refund exclusion.",
+          "expected_policy_id": "POL-FINAL-SALE",
+          "retrieved_policy_ids": [
+            "POL-DAMAGE-30",
+            "POL-WRONG-ITEM-14",
+            "POL-NO-DAMAGE"
+          ]
+        },
+        {
+          "case_id": "M3_W8_052",
+          "query": "The receipt identifies this product as final sale.",
+          "expected_policy_id": "POL-FINAL-SALE",
+          "retrieved_policy_ids": [
+            "POL-DAMAGE-30",
+            "POL-FINAL-SALE",
+            "POL-WRONG-ITEM-14"
+          ]
+        },
+        {
+          "case_id": "M3_W8_053",
+          "query": "Can I refund a product that was excluded at checkout?",
+          "expected_policy_id": "POL-FINAL-SALE",
+          "retrieved_policy_ids": [
+            "POL-DAMAGE-30",
+            "POL-NO-DAMAGE",
+            "POL-WRONG-ITEM-14"
+          ]
+        },
+        {
+          "case_id": "M3_W8_054",
+          "query": "The discounted item was labelled non-refundable.",
+          "expected_policy_id": "POL-FINAL-SALE",
+          "retrieved_policy_ids": [
+            "POL-WRONG-ITEM-14",
+            "POL-DAMAGE-30",
+            "POL-FINAL-SALE"
+          ]
+        },
+        {
+          "case_id": "M3_W8_056",
+          "query": "The return request concerns an excluded sale product.",
+          "expected_policy_id": "POL-FINAL-SALE",
+          "retrieved_policy_ids": [
+            "POL-WRONG-ITEM-14",
+            "POL-DAMAGE-30",
+            "POL-FINAL-SALE"
+          ]
+        },
+        {
+          "case_id": "M3_W8_058",
+          "query": "The order states that the product cannot be returned.",
+          "expected_policy_id": "POL-FINAL-SALE",
+          "retrieved_policy_ids": [
+            "POL-WRONG-ITEM-14",
+            "POL-DAMAGE-30",
+            "POL-FINAL-SALE"
+          ]
+        },
+        {
+          "case_id": "M3_W8_059",
+          "query": "The item was sold with a no-refund final-sale label.",
+          "expected_policy_id": "POL-FINAL-SALE",
+          "retrieved_policy_ids": [
+            "POL-DAMAGE-30",
+            "POL-NO-DAMAGE",
+            "POL-WRONG-ITEM-14"
+          ]
+        }
+      ],
+      "limitations": [
+        "Cases are synthetic and do not establish real-world accuracy.",
+        "The policy corpus contains only four mock policies.",
+        "Queries were authored for controlled baseline evaluation."
+      ]
+    },
+    "refined": {
+      "evaluation_name": "Member 3 policy retrieval (intent_aware)",
+      "retrieval_strategy": "intent_aware",
+      "dataset_type": "synthetic_labelled_evaluation",
+      "total_cases": 60,
+      "top_1_accuracy": 1.0,
+      "hit_rate_at_3": 1.0,
+      "mean_reciprocal_rank": 1.0,
+      "per_policy_top_1_accuracy": {
+        "POL-DAMAGE-30": 1.0,
+        "POL-FINAL-SALE": 1.0,
+        "POL-NO-DAMAGE": 1.0,
+        "POL-WRONG-ITEM-14": 1.0
+      },
+      "top_1_failures": [],
+      "limitations": [
+        "Cases are synthetic and do not establish real-world accuracy.",
+        "The policy corpus contains only four mock policies.",
+        "Queries were authored for controlled baseline evaluation."
+      ]
+    },
+    "top_1_absolute_improvement": 0.3833333333333333,
+    "resolved_baseline_failure_case_ids": [
+      "M3_W8_016",
+      "M3_W8_022",
+      "M3_W8_030",
+      "M3_W8_032",
+      "M3_W8_033",
+      "M3_W8_034",
+      "M3_W8_035",
+      "M3_W8_036",
+      "M3_W8_037",
+      "M3_W8_038",
+      "M3_W8_039",
+      "M3_W8_041",
+      "M3_W8_042",
+      "M3_W8_044",
+      "M3_W8_046",
+      "M3_W8_047",
+      "M3_W8_050",
+      "M3_W8_052",
+      "M3_W8_053",
+      "M3_W8_054",
+      "M3_W8_056",
+      "M3_W8_058",
+      "M3_W8_059"
+    ],
+    "new_regression_case_ids": []
+  },
+  "evidence_regression": {
+    "total_cases": 12,
+    "passed_cases": 12,
+    "pass_rate": 1.0,
+    "failures": [],
+    "outcome_reason_counts": {
+      "Damage type is not covered by the retrieved policy.": 1,
+      "Final-sale products are not eligible for refund.": 1,
+      "No visible damage was detected.": 1,
+      "Order ID was not found.": 1,
+      "Order is not in delivered status.": 1,
+      "Order, image, and policy evidence are consistent.": 4,
+      "Refund request is outside the policy window.": 1,
+      "Required image evidence is missing.": 1,
+      "The detected product does not match the order.": 1
+    }
+  },
+  "limitations": [
+    "All evaluation records are synthetic or controlled project data.",
+    "The policy corpus contains four mock policy documents.",
+    "Intent routing is deterministic and has not been validated on real claims.",
+    "Image-model accuracy is outside the Member 3 retrieval evaluation."
+  ]
+}

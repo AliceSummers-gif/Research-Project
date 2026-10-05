@@ -27,3 +27,17 @@ upgrade without introducing Week 3 claim verification.
 The optional `Week 2 YOLO training` workflow is manual so model training does
 not consume GitHub Actions time on every code push.
 
+## Member 3 - Final Retrieval and Evidence Layer
+
+Member 3 retrieves mock orders and policies, verifies evidence completeness
+and policy eligibility, and supplies traceable features to the decision agent.
+The final Week 9 evaluation compares the frozen lexical baseline with the
+intent-aware retriever and runs the 12-case evidence regression. See
+`docs/member3_week9_final_report.md` and reproduce the saved results with:
+
+```bash
+python3 -B scripts/member3_week9_final_evaluation.py
+```
+
+The evaluation uses controlled synthetic data and must not be interpreted as
+real-world refund accuracy.
