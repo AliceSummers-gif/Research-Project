@@ -1,4 +1,4 @@
-"""Expand the Member 3 seed order database to 120 synthetic records."""
+"""Build 70 traceable synthetic orders, one per available public image."""
 
 import json
 from datetime import date, timedelta
@@ -7,7 +7,8 @@ from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 ORDER_FILE = PROJECT_ROOT / "data/orders/orders.json"
-TARGET_COUNT = 120
+IMAGE_ROOT = PROJECT_ROOT / "data/Week4_damage_dataset_v1/images"
+TARGET_COUNT = 70
 
 CATALOG = (
     ("Black Jacket", "Jacket", 129.0),
@@ -26,7 +27,7 @@ CATALOG = (
 
 
 def build_orders(seed_orders: list[dict]) -> list[dict]:
-    """Preserve ORD001-ORD012 and deterministically add ORD013-ORD120."""
+    """Preserve ORD001-ORD012 and deterministically add ORD013-ORD070."""
 
     original = seed_orders[:12]
     if len(original) != 12:
@@ -57,9 +58,42 @@ def build_orders(seed_orders: list[dict]) -> list[dict]:
     return orders
 
 
+def add_provenance(orders: list[dict]) -> list[dict]:
+    """Mark transactions synthetic and attach each public image exactly once."""
+
+    image_records = [
+        (f"H{number:03d}", f"holes_35/hole_{number:03d}.jpg", "Garment_condition_holes")
+        for number in range(1, 36)
+    ] + [
+        (f"S{number:03d}", f"spots_35/spot_{number:03d}.jpg", "Garment_condition_spots")
+        for number in range(1, 36)
+    ]
+    enriched = []
+    for index, order in enumerate(orders):
+        record = dict(order)
+        record["data_type"] = "synthetic_order"
+        record["retailer"] = "H&M Australia"
+        purchase = date.fromisoformat(record["purchase_date"])
+        record["delivery_date"] = (purchase + timedelta(days=4)).isoformat()
+        if index < len(image_records):
+            source_id, relative_path, dataset = image_records[index]
+            record["image_evidence"] = {
+                "source_dataset": dataset,
+                "source_image_id": source_id,
+                "image_path": f"data/Week4_damage_dataset_v1/images/{relative_path}",
+                "license": "CC BY 4.0",
+                "attribution": "CISUTAC project - Wargon Innovation",
+                "is_model_ground_truth": False,
+            }
+        else:
+            record["image_evidence"] = None
+        enriched.append(record)
+    return enriched
+
+
 def main() -> None:
     seed_orders = json.loads(ORDER_FILE.read_text(encoding="utf-8"))
-    orders = build_orders(seed_orders)
+    orders = add_provenance(build_orders(seed_orders))
     ORDER_FILE.write_text(json.dumps(orders, indent=2) + "\n", encoding="utf-8")
     print(f"Wrote {len(orders)} orders to {ORDER_FILE.relative_to(PROJECT_ROOT)}")
 

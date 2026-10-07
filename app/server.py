@@ -14,6 +14,7 @@ if str(PROJECT_ROOT) not in sys.path:
 from src.common.schemas import CaseInput, Member1Output, Member2Output, Member3Output
 from src.agent.agent import run_agent
 from src.evidence.pipeline import build_evidence_chain
+from src.evidence.order import load_orders
 from src.evidence.rules import load_adopted_rules
 
 
@@ -22,6 +23,9 @@ class RefundAppHandler(SimpleHTTPRequestHandler):
         super().__init__(*args, directory=str(PROJECT_ROOT), **kwargs)
 
     def do_GET(self):
+        if self.path == "/api/orders":
+            orders = [asdict(order) for order in load_orders().values()]
+            return self._send_json(200, {"orders": orders, "count": len(orders)})
         if self.path == "/":
             self.path = "/app/risk_aware_refund_ui.html"
         return super().do_GET()
@@ -52,7 +56,10 @@ class RefundAppHandler(SimpleHTTPRequestHandler):
 
 def run_evidence_case(payload):
     case_id = payload.get("case_id", "UI-DEMO-001")
-    detected_product = payload.get("detected_product") or "Black Jacket"
+    order_record = load_orders().get(str(payload.get("order_id", "")).upper())
+    detected_product = payload.get("detected_product") or (
+        order_record.product_category if order_record else "unknown"
+    )
     damage_type = payload.get("damage_type") or "hole_or_tear"
     image_usable = bool(payload.get("image_usable", True))
 

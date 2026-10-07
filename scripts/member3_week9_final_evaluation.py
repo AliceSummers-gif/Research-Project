@@ -113,7 +113,7 @@ def build_final_results() -> dict[str, object]:
         "evidence_validation": evaluate_evidence_regression(evidence_validation_cases),
         "limitations": [
             "All evaluation records are synthetic or controlled project data.",
-            "The policy corpus contains four mock policy documents.",
+            "The policy corpus contains selected official H&M, Zara and UNIQLO Australia clauses plus clearly labelled internal safety rules.",
             "Intent routing is deterministic and has not been validated on real claims.",
             "Image-model accuracy is outside the Member 3 retrieval evaluation.",
         ],

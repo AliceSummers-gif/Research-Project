@@ -47,11 +47,16 @@ consistency, product mismatch, expired requests, final-sale items, and unknown
 orders. The original 12-case evidence set remains as a separate regression
 smoke test covering legacy labels and edge conditions.
 
-The prototype order database contains 120 synthetic demo records. The original
+The prototype order database contains 70 explicitly labelled synthetic demo records. The original
 `ORD001`-`ORD012` records are preserved for backward compatibility, while
-`ORD013`-`ORD120` are deterministic generated records covering different
+`ORD013`-`ORD070` are deterministic generated records covering different
 products, prices, dates, delivery states, and final-sale flags. These are UI
-seed records, not real orders and not additional validation cases.
+seed records, not real orders and not additional validation cases. The first
+70 records each reference one different, locally available Wargön Innovation
+garment image (35 hole and 35 spot images) with dataset, image ID, path,
+attribution, and CC BY 4.0 licence metadata. No image is duplicated to create
+an artificial independent sample; users can still replace a demo image with
+their own upload in the UI.
 
 Final values are generated in
 `data/results/member3_week9_final_results.json`. They must be interpreted as
@@ -59,25 +64,25 @@ controlled prototype results rather than real-world model accuracy.
 
 | Metric | Week 8 lexical baseline | Week 9 intent-aware |
 | --- | ---: | ---: |
-| Top-1 accuracy | 61.7% | 100.0% |
-| Hit Rate@3 | 95.0% | 100.0% |
-| Mean Reciprocal Rank | 0.764 | 1.000 |
-| Top-1 failures | 23 | 0 |
+| Top-1 accuracy | 51.7% | 95.0% |
+| Hit Rate@3 | 83.3% | 100.0% |
+| Mean Reciprocal Rank | 0.656 | 0.975 |
+| Top-1 failures | 29 | 3 |
 
 ![Policy retrieval comparison](figures/member3_retrieval_comparison.svg)
 
-All 23 baseline Top-1 failures were resolved on the frozen controlled set, and
-no new regression case was introduced. Each of the four policy families
-reached 100% Top-1 accuracy on its 15 synthetic examples. This result shows
-that the targeted routing rules address the known Week 8 errors; it does not
-estimate performance on unseen real customer language.
+The intent-aware retriever resolves most baseline errors on the frozen
+controlled set. Three queries remain mismatched, so the report retains them as
+real observed retrieval errors rather than rewriting the expected labels or
+claiming perfect accuracy. These controlled results do not estimate
+performance on unseen real customer language.
 
 ## Stable prototype checks
 
 The final regression confirms that Member 3 can:
 
 - retrieve known orders and return a clear unknown-order outcome;
-- retrieve a traceable mock policy source;
+- retrieve selected, traceable official H&M Australia policy clauses;
 - check delivery status, refund window, final-sale status, image presence,
   image usability, detected damage, claim-image consistency, damage coverage,
   and product-order consistency;
@@ -116,7 +121,11 @@ python3 -B scripts/member3_week9_generate_figures.py
 
 ## Limitations and next steps
 
-The policy corpus and evaluation cases remain small and controlled. The
+The policy corpus now contains only the return fields used by this module from
+official H&M, Zara and UNIQLO Australia sources: window, defect handling,
+condition, exclusions, return fee, channel and source metadata. Internal
+order-mismatch and insufficient-evidence controls are labelled as project
+rules rather than retailer policy. The evaluation cases remain small and controlled. The
 intent-aware method is deterministic, not a trained RAG model, and its results
 must not be presented as production accuracy. A future study should freeze a
 larger independent test set, add paraphrases and adversarial claims, compare a

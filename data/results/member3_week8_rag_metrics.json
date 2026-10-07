@@ -1,15 +1,16 @@
 {
-  "evaluation_name": "Member 3 Week 8 lexical RAG baseline",
+  "evaluation_name": "Member 3 policy retrieval (lexical)",
+  "retrieval_strategy": "lexical",
   "dataset_type": "synthetic_labelled_evaluation",
   "total_cases": 60,
-  "top_1_accuracy": 0.6166666666666667,
-  "hit_rate_at_3": 0.95,
-  "mean_reciprocal_rank": 0.7638888888888892,
+  "top_1_accuracy": 0.5166666666666667,
+  "hit_rate_at_3": 0.8333333333333334,
+  "mean_reciprocal_rank": 0.6555555555555557,
   "per_policy_top_1_accuracy": {
     "POL-DAMAGE-30": 1.0,
-    "POL-FINAL-SALE": 0.4,
-    "POL-NO-DAMAGE": 0.26666666666666666,
-    "POL-WRONG-ITEM-14": 0.8
+    "POL-FINAL-SALE": 0.0,
+    "POL-NO-DAMAGE": 0.5333333333333333,
+    "POL-WRONG-ITEM-14": 0.5333333333333333
   },
   "top_1_failures": [
     {
@@ -23,8 +24,8 @@
       ]
     },
     {
-      "case_id": "M3_W8_022",
-      "query": "This delivered product belongs to a different order.",
+      "case_id": "M3_W8_020",
+      "query": "I was sent the wrong item in the package.",
       "expected_policy_id": "POL-WRONG-ITEM-14",
       "retrieved_policy_ids": [
         "POL-DAMAGE-30",
@@ -33,19 +34,9 @@
       ]
     },
     {
-      "case_id": "M3_W8_030",
-      "query": "The package contains a product mismatch.",
+      "case_id": "M3_W8_021",
+      "query": "The order record says jacket but the parcel contains trousers.",
       "expected_policy_id": "POL-WRONG-ITEM-14",
-      "retrieved_policy_ids": [
-        "POL-DAMAGE-30",
-        "POL-WRONG-ITEM-14",
-        "POL-NO-DAMAGE"
-      ]
-    },
-    {
-      "case_id": "M3_W8_032",
-      "query": "I cannot identify a hole, tear or stain in the image.",
-      "expected_policy_id": "POL-NO-DAMAGE",
       "retrieved_policy_ids": [
         "POL-DAMAGE-30",
         "POL-NO-DAMAGE",
@@ -53,18 +44,48 @@
       ]
     },
     {
-      "case_id": "M3_W8_033",
-      "query": "The garment appears clean and undamaged.",
-      "expected_policy_id": "POL-NO-DAMAGE",
+      "case_id": "M3_W8_023",
+      "query": "I received another customer's item by mistake.",
+      "expected_policy_id": "POL-WRONG-ITEM-14",
       "retrieved_policy_ids": [
-        "POL-WRONG-ITEM-14",
         "POL-DAMAGE-30",
+        "POL-WRONG-ITEM-14",
+        "POL-FINAL-SALE"
+      ]
+    },
+    {
+      "case_id": "M3_W8_024",
+      "query": "The item shown in my photo does not match the purchased product.",
+      "expected_policy_id": "POL-WRONG-ITEM-14",
+      "retrieved_policy_ids": [
+        "POL-NO-DAMAGE",
+        "POL-WRONG-ITEM-14",
+        "POL-DAMAGE-30"
+      ]
+    },
+    {
+      "case_id": "M3_W8_028",
+      "query": "The label and item are different from my order confirmation.",
+      "expected_policy_id": "POL-WRONG-ITEM-14",
+      "retrieved_policy_ids": [
+        "POL-DAMAGE-30",
+        "POL-WRONG-ITEM-14",
         "POL-NO-DAMAGE"
       ]
     },
     {
-      "case_id": "M3_W8_034",
-      "query": "There is no damage visible on the product.",
+      "case_id": "M3_W8_029",
+      "query": "I need a refund because the delivered item is not mine.",
+      "expected_policy_id": "POL-WRONG-ITEM-14",
+      "retrieved_policy_ids": [
+        "POL-DAMAGE-30",
+        "POL-NO-DAMAGE",
+        "POL-WRONG-ITEM-14"
+      ]
+    },
+    {
+      "case_id": "M3_W8_032",
+      "query": "I cannot identify a hole, tear or stain in the image.",
       "expected_policy_id": "POL-NO-DAMAGE",
       "retrieved_policy_ids": [
         "POL-DAMAGE-30",
@@ -79,17 +100,7 @@
       "retrieved_policy_ids": [
         "POL-DAMAGE-30",
         "POL-NO-DAMAGE",
-        "POL-WRONG-ITEM-14"
-      ]
-    },
-    {
-      "case_id": "M3_W8_036",
-      "query": "No defect can be seen in the evidence.",
-      "expected_policy_id": "POL-NO-DAMAGE",
-      "retrieved_policy_ids": [
-        "POL-DAMAGE-30",
-        "POL-NO-DAMAGE",
-        "POL-WRONG-ITEM-14"
+        "POL-FINAL-SALE"
       ]
     },
     {
@@ -105,16 +116,6 @@
     {
       "case_id": "M3_W8_038",
       "query": "The claim says damage but the product looks normal.",
-      "expected_policy_id": "POL-NO-DAMAGE",
-      "retrieved_policy_ids": [
-        "POL-DAMAGE-30",
-        "POL-NO-DAMAGE",
-        "POL-WRONG-ITEM-14"
-      ]
-    },
-    {
-      "case_id": "M3_W8_039",
-      "query": "The fabric has no visible hole or mark.",
       "expected_policy_id": "POL-NO-DAMAGE",
       "retrieved_policy_ids": [
         "POL-DAMAGE-30",
@@ -148,8 +149,8 @@
       "expected_policy_id": "POL-NO-DAMAGE",
       "retrieved_policy_ids": [
         "POL-DAMAGE-30",
-        "POL-WRONG-ITEM-14",
-        "POL-NO-DAMAGE"
+        "POL-NO-DAMAGE",
+        "POL-WRONG-ITEM-14"
       ]
     },
     {
@@ -157,8 +158,8 @@
       "query": "The item was marked final sale when I purchased it.",
       "expected_policy_id": "POL-FINAL-SALE",
       "retrieved_policy_ids": [
-        "POL-WRONG-ITEM-14",
         "POL-DAMAGE-30",
+        "POL-NO-DAMAGE",
         "POL-FINAL-SALE"
       ]
     },
@@ -168,13 +169,13 @@
       "expected_policy_id": "POL-FINAL-SALE",
       "retrieved_policy_ids": [
         "POL-DAMAGE-30",
-        "POL-FINAL-SALE",
-        "POL-NO-DAMAGE"
+        "POL-WRONG-ITEM-14",
+        "POL-FINAL-SALE"
       ]
     },
     {
-      "case_id": "M3_W8_050",
-      "query": "The product is a sale item with a refund exclusion.",
+      "case_id": "M3_W8_048",
+      "query": "The order contains a clearance item excluded from refunds.",
       "expected_policy_id": "POL-FINAL-SALE",
       "retrieved_policy_ids": [
         "POL-DAMAGE-30",
@@ -183,13 +184,43 @@
       ]
     },
     {
+      "case_id": "M3_W8_049",
+      "query": "This purchase was sold as final sale.",
+      "expected_policy_id": "POL-FINAL-SALE",
+      "retrieved_policy_ids": [
+        "POL-WRONG-ITEM-14",
+        "POL-DAMAGE-30",
+        "POL-FINAL-SALE"
+      ]
+    },
+    {
+      "case_id": "M3_W8_050",
+      "query": "The product is a sale item with a refund exclusion.",
+      "expected_policy_id": "POL-FINAL-SALE",
+      "retrieved_policy_ids": [
+        "POL-DAMAGE-30",
+        "POL-NO-DAMAGE",
+        "POL-WRONG-ITEM-14"
+      ]
+    },
+    {
+      "case_id": "M3_W8_051",
+      "query": "I changed my mind about an item marked final sale.",
+      "expected_policy_id": "POL-FINAL-SALE",
+      "retrieved_policy_ids": [
+        "POL-WRONG-ITEM-14",
+        "POL-DAMAGE-30",
+        "POL-FINAL-SALE"
+      ]
+    },
+    {
       "case_id": "M3_W8_052",
       "query": "The receipt identifies this product as final sale.",
       "expected_policy_id": "POL-FINAL-SALE",
       "retrieved_policy_ids": [
+        "POL-WRONG-ITEM-14",
         "POL-DAMAGE-30",
-        "POL-FINAL-SALE",
-        "POL-WRONG-ITEM-14"
+        "POL-NO-DAMAGE"
       ]
     },
     {
@@ -207,9 +238,19 @@
       "query": "The discounted item was labelled non-refundable.",
       "expected_policy_id": "POL-FINAL-SALE",
       "retrieved_policy_ids": [
+        "POL-DAMAGE-30",
+        "POL-NO-DAMAGE",
+        "POL-WRONG-ITEM-14"
+      ]
+    },
+    {
+      "case_id": "M3_W8_055",
+      "query": "This clearance purchase has a final-sale condition.",
+      "expected_policy_id": "POL-FINAL-SALE",
+      "retrieved_policy_ids": [
         "POL-WRONG-ITEM-14",
         "POL-DAMAGE-30",
-        "POL-FINAL-SALE"
+        "POL-NO-DAMAGE"
       ]
     },
     {
@@ -217,9 +258,19 @@
       "query": "The return request concerns an excluded sale product.",
       "expected_policy_id": "POL-FINAL-SALE",
       "retrieved_policy_ids": [
-        "POL-WRONG-ITEM-14",
         "POL-DAMAGE-30",
-        "POL-FINAL-SALE"
+        "POL-FINAL-SALE",
+        "POL-WRONG-ITEM-14"
+      ]
+    },
+    {
+      "case_id": "M3_W8_057",
+      "query": "I bought this from the final-sale section.",
+      "expected_policy_id": "POL-FINAL-SALE",
+      "retrieved_policy_ids": [
+        "POL-DAMAGE-30",
+        "POL-NO-DAMAGE",
+        "POL-WRONG-ITEM-14"
       ]
     },
     {
@@ -227,9 +278,9 @@
       "query": "The order states that the product cannot be returned.",
       "expected_policy_id": "POL-FINAL-SALE",
       "retrieved_policy_ids": [
-        "POL-WRONG-ITEM-14",
         "POL-DAMAGE-30",
-        "POL-FINAL-SALE"
+        "POL-WRONG-ITEM-14",
+        "POL-NO-DAMAGE"
       ]
     },
     {
@@ -241,11 +292,21 @@
         "POL-NO-DAMAGE",
         "POL-WRONG-ITEM-14"
       ]
+    },
+    {
+      "case_id": "M3_W8_060",
+      "query": "A final sale exclusion applies to this purchase.",
+      "expected_policy_id": "POL-FINAL-SALE",
+      "retrieved_policy_ids": [
+        "POL-WRONG-ITEM-14",
+        "POL-DAMAGE-30",
+        "POL-NO-DAMAGE"
+      ]
     }
   ],
   "limitations": [
     "Cases are synthetic and do not establish real-world accuracy.",
-    "The policy corpus contains only four mock policies.",
+    "The evaluation covers four controlled policy or safety-rule families.",
     "Queries were authored for controlled baseline evaluation."
   ]
 }

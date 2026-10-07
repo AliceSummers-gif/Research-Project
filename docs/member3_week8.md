@@ -8,7 +8,7 @@ embedding-based retrieval or real customer data.
 ## Dataset
 
 - 60 synthetic labelled policy-retrieval cases.
-- 15 cases for each of four mock policies.
+- 15 cases for each of four controlled policy or safety-rule families.
 - Includes vocabulary variation for damaged items, wrong items, no visible
   damage, and final-sale exclusions.
 - Each record contains a case ID, query, expected policy ID, and an explicit

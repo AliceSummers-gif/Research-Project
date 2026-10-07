@@ -97,6 +97,7 @@ def retrieve_policies(
     filename: str | Path = DEFAULT_POLICY_KB,
     top_k: int = 3,
     strategy: str = "intent_aware",
+    retailer: str = "H&M Australia",
 ) -> list[RetrievedPolicy]:
     """Rank policies using lexical overlap with optional intent routing."""
 
@@ -109,6 +110,13 @@ def retrieve_policies(
 
     with Path(filename).open(encoding="utf-8") as policy_file:
         policies = json.load(policy_file)
+
+    policies = [
+        policy for policy in policies
+        if policy.get("retailer", "H&M Australia").casefold() == retailer.casefold()
+    ]
+    if not policies:
+        raise ValueError(f"no policies configured for retailer: {retailer}")
 
     query_tokens = _tokens(query)
     routed_policy_id = classify_policy_intent(query) if strategy == "intent_aware" else None
@@ -145,6 +153,13 @@ def retrieve_policies(
                 refund_window_days=policy["refund_window_days"],
                 requires_image=policy["requires_image"],
                 eligible_damage_types=tuple(policy["eligible_damage_types"]),
+                policy_kind=policy.get("policy_kind", "retailer_policy"),
+                source_url=policy.get("source_url"),
+                source_updated_date=policy.get("source_updated_date"),
+                retrieved_date=policy.get("retrieved_date"),
+                excluded_categories=tuple(policy.get("excluded_categories", [])),
+                return_fee_aud=policy.get("return_fee_aud"),
+                retailer=policy.get("retailer", "H&M Australia"),
             )
         )
     return results
@@ -154,7 +169,10 @@ def retrieve_best_policy(
     query: str,
     filename: str | Path = DEFAULT_POLICY_KB,
     strategy: str = "intent_aware",
+    retailer: str = "H&M Australia",
 ) -> RetrievedPolicy:
     """Return the highest-ranked policy for a query."""
 
-    return retrieve_policies(query, filename, top_k=1, strategy=strategy)[0]
+    return retrieve_policies(
+        query, filename, top_k=1, strategy=strategy, retailer=retailer
+    )[0]

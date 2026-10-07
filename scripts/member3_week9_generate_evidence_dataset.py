@@ -167,7 +167,10 @@ SCENARIOS = {
         "claim_image_consistency": 0.90,
         "request_date": "2026-08-15",
         "expected_eligible": False,
-        "expected_reason": "Final-sale products are not eligible for refund.",
+        "expected_reason": (
+            "Final-sale products are not eligible for automatic refund; "
+            "statutory defect rights require manual review."
+        ),
     },
     "unknown_order": {
         "order_id": "ORD999",

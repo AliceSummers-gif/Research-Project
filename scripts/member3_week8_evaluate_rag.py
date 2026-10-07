@@ -69,7 +69,7 @@ def evaluate(
         "top_1_failures": failures,
         "limitations": [
             "Cases are synthetic and do not establish real-world accuracy.",
-            "The policy corpus contains only four mock policies.",
+            "The evaluation covers four controlled policy or safety-rule families.",
             "Queries were authored for controlled baseline evaluation.",
         ],
     }
