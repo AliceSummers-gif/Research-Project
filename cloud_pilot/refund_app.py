@@ -15,6 +15,7 @@ sys.path.insert(0, str(ROOT))
 import streamlit as st
 from cloud_pilot.core import Runtime
 from cloud_pilot.workflow import SessionRefundService
+from cloud_pilot.presentation import evidence_summary
 
 st.set_page_config(page_title='Refund Studio', page_icon='◇', layout='centered')
 
@@ -95,8 +96,21 @@ else:
     st.subheader(LABELS[record['status']])
     st.write(f"Order {record['order_id']} · Request date {record['request_date']}")
     st.write('Claim:', record['claim_text'])
-    st.write('Original Agent assessment:', result['decision']['reason'])
-    st.write('Missing evidence:', ', '.join(result.get('missing_evidence', [])) or 'None reported')
+    st.write('Automated assessment for this photo:', result['decision']['reason'])
+    summary = evidence_summary(result)
+    st.subheader('Evidence summary')
+    st.write('Model damage prediction:', summary['damage'])
+    st.write('Detected damage location:', summary['location'])
+    st.write('Description compared with the photo:', summary['verdict'])
+    st.write(summary['reason'])
+    st.caption('A model prediction can be wrong. Damage scores are not probabilities of refund eligibility.')
+    quality, policy = result.get('member1', {}), result.get('member3', {})
+    st.write('Photo usable:', 'Yes' if quality.get('image_usable') else 'No')
+    st.write('Order validated:', 'Yes' if policy.get('order_valid') else 'No')
+    st.write('Policy eligibility confirmed:', 'Yes' if policy.get('policy_eligible') else 'No')
+    st.write('Missing evidence:', ', '.join(summary['missing']) or 'None reported')
+    if summary['missing']:
+        st.info('A clearer photo may help with visual evidence, but does not guarantee that this model can identify the product or location. Demo review approval preserves these unresolved gaps.')
     if record['status'] == 'NEEDS_EVIDENCE':
         st.write('Upload a clearer photo of the same product and claimed damage. Previous assessments remain in the history.')
         with st.form('supplement_' + selected):
@@ -109,7 +123,8 @@ else:
         st.write('Human review demonstration. A review records a separate decision; it does not resolve missing model evidence.')
         with st.form('review_' + selected):
             reviewer = st.text_input('Demo reviewer name', max_chars=2000)
-            action = st.selectbox('Review decision', ['REQUEST_MORE_EVIDENCE', 'APPROVE', 'REJECT'])
+            action = st.selectbox('Review decision', ['REQUEST_MORE_EVIDENCE', 'APPROVE', 'REJECT'],
+                                  format_func=lambda action: {'REQUEST_MORE_EVIDENCE': 'Request more evidence', 'APPROVE': 'Approve for simulated refund', 'REJECT': 'Decline in demonstration'}[action])
             note = st.text_area('Review note and reason', max_chars=2000)
             submitted = st.form_submit_button('Save demo review')
         if submitted:
@@ -124,7 +139,7 @@ else:
         st.json(result)
     st.subheader('Application history')
     for event in record['events']:
-        st.write(f"{event['at']} · {event['action']} · {LABELS[event['status']]}")
+        st.write(f"{event['at']} · {event['action'].replace('_', ' ').title()} · {LABELS[event['status']]}")
         if event.get('reviewer'):
             st.write('Reviewer:', event['reviewer'])
         if event.get('note'):
