@@ -18,6 +18,8 @@ Project skeleton for a risk-aware refund AI system.
 
 Member 3 retrieves mock orders and policies, verifies evidence completeness
 and policy eligibility, and supplies traceable features to the decision agent.
+The demo order source contains 120 synthetic records while preserving the
+original 12 order IDs used by existing integration tests.
 The final Week 9 evaluation compares the frozen lexical baseline with the
 intent-aware retriever, validates 120 balanced evidence cases, and retains the
 12-case legacy regression. See

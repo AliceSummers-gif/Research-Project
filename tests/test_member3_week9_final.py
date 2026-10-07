@@ -6,6 +6,7 @@ from scripts.member3_week9_final_evaluation import build_final_results
 from scripts.member3_week9_generate_evidence_dataset import (
     build_cases as build_evidence_cases,
 )
+from scripts.member3_generate_mock_orders import build_orders
 from src.evidence.rag import classify_policy_intent, retrieve_best_policy
 
 
@@ -78,3 +79,16 @@ def test_saved_week9_results_match_reproducible_evaluation():
         saved = json.load(file)
 
     assert saved == build_final_results()
+
+
+def test_mock_order_expansion_preserves_original_records():
+    with open("data/orders/orders.json", encoding="utf-8") as file:
+        saved = json.load(file)
+
+    regenerated = build_orders(saved[:12])
+    assert len(saved) == 120
+    assert saved == regenerated
+    assert saved[0]["order_id"] == "ORD001"
+    assert saved[11]["order_id"] == "ORD012"
+    assert saved[12]["order_id"] == "ORD013"
+    assert saved[-1]["order_id"] == "ORD120"

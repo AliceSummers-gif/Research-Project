@@ -47,6 +47,12 @@ consistency, product mismatch, expired requests, final-sale items, and unknown
 orders. The original 12-case evidence set remains as a separate regression
 smoke test covering legacy labels and edge conditions.
 
+The prototype order database contains 120 synthetic demo records. The original
+`ORD001`-`ORD012` records are preserved for backward compatibility, while
+`ORD013`-`ORD120` are deterministic generated records covering different
+products, prices, dates, delivery states, and final-sale flags. These are UI
+seed records, not real orders and not additional validation cases.
+
 Final values are generated in
 `data/results/member3_week9_final_results.json`. They must be interpreted as
 controlled prototype results rather than real-world model accuracy.
@@ -96,6 +102,7 @@ therefore reported separately from the dependency-free Member 3 test result.
 From the repository root, run:
 
 ```bash
+python3 -B scripts/member3_generate_mock_orders.py
 python3 -B scripts/member3_week9_generate_evidence_dataset.py
 python3 -B scripts/member3_week9_final_evaluation.py
 python3 -B scripts/member3_week9_generate_figures.py

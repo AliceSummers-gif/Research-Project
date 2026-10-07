@@ -10,8 +10,8 @@ def load_cases():
         return json.load(case_file)
 
 
-def test_week4_has_twelve_orders_and_cases():
-    assert len(load_orders()) == 12
+def test_order_database_has_one_hundred_twenty_records_and_twelve_legacy_cases():
+    assert len(load_orders()) == 120
     assert len(load_cases()) == 12
 
 
