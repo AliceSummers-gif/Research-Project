@@ -2,7 +2,7 @@
 
 from datetime import date
 
-from src.agent.agent import run_agent
+from src.agent.final_agent import run_final_agent as run_agent
 from src.agent.member1_adapter import run_member1
 from src.agent.member2_adapter import run_member2_verification
 from src.common.schemas import CaseInput, Member3Output
@@ -84,6 +84,7 @@ def run_pipeline(
         "case_id": case.case_id,
         "request_date": request_date,
         "confidence_method": confidence_method,
+        "decision_profile": "week9_conservative",
         "member1": member1.model_dump(),
         "raw_image_quality": raw_quality,
         "member2": member2.model_dump(),

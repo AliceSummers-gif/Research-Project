@@ -1,0 +1,562 @@
+{
+  "scope": "Reused synthetic Week 8 scenarios; not new independent test data or real-image accuracy.",
+  "python": "3.14.3",
+  "model_sha256": "152abc7dc398cf165c961430059681ea5f04ed42a5c3c3ec37b99f7819349283",
+  "selection": "ML 0.90 from Week 8 validation; rule corroboration 0.80 motivated by validation V08. Test cases were previously seen; this is a regression comparison.",
+  "splits": {
+    "validation": {
+      "input_sha256": "8551a1939d10023a0f221ed3881066b23407ec2bbaa1b3eb16497eaab214318f",
+      "labels_sha256": "d50ff67fad9953f7f5960bb970ae91d113d29573818507db77d13c96d4941caf",
+      "methods": {
+        "baseline_rule": {
+          "summary": {
+            "total": 10,
+            "correct": 10,
+            "incorrect_auto_refunds": 0,
+            "unnecessary_reviews": 0,
+            "unnecessary_evidence_requests": 0
+          },
+          "cases": [
+            {
+              "case_id": "W8_V01",
+              "expected": "AUTO_REFUND",
+              "predicted": "AUTO_REFUND",
+              "reason": "Decision matrix result: confidence=HIGH, refund risk=LOW.",
+              "confidence": 0.95
+            },
+            {
+              "case_id": "W8_V02",
+              "expected": "AUTO_REFUND",
+              "predicted": "AUTO_REFUND",
+              "reason": "Decision matrix result: confidence=HIGH, refund risk=LOW.",
+              "confidence": 0.9
+            },
+            {
+              "case_id": "W8_V03",
+              "expected": "REQUEST_MORE_EVIDENCE",
+              "predicted": "REQUEST_MORE_EVIDENCE",
+              "reason": "The uploaded image is not usable.",
+              "confidence": 0.81
+            },
+            {
+              "case_id": "W8_V04",
+              "expected": "REQUEST_MORE_EVIDENCE",
+              "predicted": "REQUEST_MORE_EVIDENCE",
+              "reason": "The uploaded image is not usable.",
+              "confidence": 0.95
+            },
+            {
+              "case_id": "W8_V05",
+              "expected": "HUMAN_REVIEW",
+              "predicted": "HUMAN_REVIEW",
+              "reason": "The order could not be validated.",
+              "confidence": 0.95
+            },
+            {
+              "case_id": "W8_V06",
+              "expected": "HUMAN_REVIEW",
+              "predicted": "HUMAN_REVIEW",
+              "reason": "Decision matrix result: confidence=HIGH, refund risk=HIGH.",
+              "confidence": 0.95
+            },
+            {
+              "case_id": "W8_V07",
+              "expected": "REQUEST_MORE_EVIDENCE",
+              "predicted": "REQUEST_MORE_EVIDENCE",
+              "reason": "Decision matrix result: confidence=MEDIUM, refund risk=LOW.",
+              "confidence": 0.7
+            },
+            {
+              "case_id": "W8_V08",
+              "expected": "REQUEST_MORE_EVIDENCE",
+              "predicted": "REQUEST_MORE_EVIDENCE",
+              "reason": "Decision matrix result: confidence=MEDIUM, refund risk=LOW.",
+              "confidence": 0.79
+            },
+            {
+              "case_id": "W8_V09",
+              "expected": "AUTO_REFUND",
+              "predicted": "AUTO_REFUND",
+              "reason": "Decision matrix result: confidence=HIGH, refund risk=LOW.",
+              "confidence": 0.8
+            },
+            {
+              "case_id": "W8_V10",
+              "expected": "AUTO_REFUND",
+              "predicted": "AUTO_REFUND",
+              "reason": "Decision matrix result: confidence=HIGH, refund risk=LOW.",
+              "confidence": 0.85
+            }
+          ]
+        },
+        "baseline_ml": {
+          "summary": {
+            "total": 10,
+            "correct": 8,
+            "incorrect_auto_refunds": 2,
+            "unnecessary_reviews": 0,
+            "unnecessary_evidence_requests": 0
+          },
+          "cases": [
+            {
+              "case_id": "W8_V01",
+              "expected": "AUTO_REFUND",
+              "predicted": "AUTO_REFUND",
+              "reason": "Decision matrix result: confidence=HIGH, refund risk=LOW.",
+              "confidence": 1.0
+            },
+            {
+              "case_id": "W8_V02",
+              "expected": "AUTO_REFUND",
+              "predicted": "AUTO_REFUND",
+              "reason": "Decision matrix result: confidence=HIGH, refund risk=LOW.",
+              "confidence": 1.0
+            },
+            {
+              "case_id": "W8_V03",
+              "expected": "REQUEST_MORE_EVIDENCE",
+              "predicted": "REQUEST_MORE_EVIDENCE",
+              "reason": "The uploaded image is not usable.",
+              "confidence": 0.0
+            },
+            {
+              "case_id": "W8_V04",
+              "expected": "REQUEST_MORE_EVIDENCE",
+              "predicted": "REQUEST_MORE_EVIDENCE",
+              "reason": "The uploaded image is not usable.",
+              "confidence": 0.0
+            },
+            {
+              "case_id": "W8_V05",
+              "expected": "HUMAN_REVIEW",
+              "predicted": "HUMAN_REVIEW",
+              "reason": "The order could not be validated.",
+              "confidence": 0.02
+            },
+            {
+              "case_id": "W8_V06",
+              "expected": "HUMAN_REVIEW",
+              "predicted": "HUMAN_REVIEW",
+              "reason": "Decision matrix result: confidence=HIGH, refund risk=HIGH.",
+              "confidence": 1.0
+            },
+            {
+              "case_id": "W8_V07",
+              "expected": "REQUEST_MORE_EVIDENCE",
+              "predicted": "AUTO_REFUND",
+              "reason": "Decision matrix result: confidence=HIGH, refund risk=LOW.",
+              "confidence": 0.83
+            },
+            {
+              "case_id": "W8_V08",
+              "expected": "REQUEST_MORE_EVIDENCE",
+              "predicted": "AUTO_REFUND",
+              "reason": "Decision matrix result: confidence=HIGH, refund risk=LOW.",
+              "confidence": 0.97
+            },
+            {
+              "case_id": "W8_V09",
+              "expected": "AUTO_REFUND",
+              "predicted": "AUTO_REFUND",
+              "reason": "Decision matrix result: confidence=HIGH, refund risk=LOW.",
+              "confidence": 0.98
+            },
+            {
+              "case_id": "W8_V10",
+              "expected": "AUTO_REFUND",
+              "predicted": "AUTO_REFUND",
+              "reason": "Decision matrix result: confidence=HIGH, refund risk=LOW.",
+              "confidence": 0.99
+            }
+          ]
+        },
+        "final_rule": {
+          "summary": {
+            "total": 10,
+            "correct": 10,
+            "incorrect_auto_refunds": 0,
+            "unnecessary_reviews": 0,
+            "unnecessary_evidence_requests": 0
+          },
+          "cases": [
+            {
+              "case_id": "W8_V01",
+              "expected": "AUTO_REFUND",
+              "predicted": "AUTO_REFUND",
+              "reason": "Decision matrix result: confidence=HIGH, refund risk=LOW.",
+              "confidence": 0.95
+            },
+            {
+              "case_id": "W8_V02",
+              "expected": "AUTO_REFUND",
+              "predicted": "AUTO_REFUND",
+              "reason": "Decision matrix result: confidence=HIGH, refund risk=LOW.",
+              "confidence": 0.9
+            },
+            {
+              "case_id": "W8_V03",
+              "expected": "REQUEST_MORE_EVIDENCE",
+              "predicted": "REQUEST_MORE_EVIDENCE",
+              "reason": "The uploaded image is not usable.",
+              "confidence": 0.81
+            },
+            {
+              "case_id": "W8_V04",
+              "expected": "REQUEST_MORE_EVIDENCE",
+              "predicted": "REQUEST_MORE_EVIDENCE",
+              "reason": "The uploaded image is not usable.",
+              "confidence": 0.95
+            },
+            {
+              "case_id": "W8_V05",
+              "expected": "HUMAN_REVIEW",
+              "predicted": "HUMAN_REVIEW",
+              "reason": "The order could not be validated.",
+              "confidence": 0.95
+            },
+            {
+              "case_id": "W8_V06",
+              "expected": "HUMAN_REVIEW",
+              "predicted": "HUMAN_REVIEW",
+              "reason": "Decision matrix result: confidence=HIGH, refund risk=HIGH.",
+              "confidence": 0.95
+            },
+            {
+              "case_id": "W8_V07",
+              "expected": "REQUEST_MORE_EVIDENCE",
+              "predicted": "REQUEST_MORE_EVIDENCE",
+              "reason": "Decision matrix result: confidence=MEDIUM, refund risk=LOW.",
+              "confidence": 0.7
+            },
+            {
+              "case_id": "W8_V08",
+              "expected": "REQUEST_MORE_EVIDENCE",
+              "predicted": "REQUEST_MORE_EVIDENCE",
+              "reason": "Decision matrix result: confidence=MEDIUM, refund risk=LOW.",
+              "confidence": 0.79
+            },
+            {
+              "case_id": "W8_V09",
+              "expected": "AUTO_REFUND",
+              "predicted": "AUTO_REFUND",
+              "reason": "Decision matrix result: confidence=HIGH, refund risk=LOW.",
+              "confidence": 0.8
+            },
+            {
+              "case_id": "W8_V10",
+              "expected": "AUTO_REFUND",
+              "predicted": "AUTO_REFUND",
+              "reason": "Decision matrix result: confidence=HIGH, refund risk=LOW.",
+              "confidence": 0.85
+            }
+          ]
+        },
+        "final_ml": {
+          "summary": {
+            "total": 10,
+            "correct": 10,
+            "incorrect_auto_refunds": 0,
+            "unnecessary_reviews": 0,
+            "unnecessary_evidence_requests": 0
+          },
+          "cases": [
+            {
+              "case_id": "W8_V01",
+              "expected": "AUTO_REFUND",
+              "predicted": "AUTO_REFUND",
+              "reason": "Decision matrix result: confidence=HIGH, refund risk=LOW.",
+              "confidence": 1.0
+            },
+            {
+              "case_id": "W8_V02",
+              "expected": "AUTO_REFUND",
+              "predicted": "AUTO_REFUND",
+              "reason": "Decision matrix result: confidence=HIGH, refund risk=LOW.",
+              "confidence": 1.0
+            },
+            {
+              "case_id": "W8_V03",
+              "expected": "REQUEST_MORE_EVIDENCE",
+              "predicted": "REQUEST_MORE_EVIDENCE",
+              "reason": "The uploaded image is not usable.",
+              "confidence": 0.0
+            },
+            {
+              "case_id": "W8_V04",
+              "expected": "REQUEST_MORE_EVIDENCE",
+              "predicted": "REQUEST_MORE_EVIDENCE",
+              "reason": "The uploaded image is not usable.",
+              "confidence": 0.0
+            },
+            {
+              "case_id": "W8_V05",
+              "expected": "HUMAN_REVIEW",
+              "predicted": "HUMAN_REVIEW",
+              "reason": "The order could not be validated.",
+              "confidence": 0.02
+            },
+            {
+              "case_id": "W8_V06",
+              "expected": "HUMAN_REVIEW",
+              "predicted": "HUMAN_REVIEW",
+              "reason": "Decision matrix result: confidence=HIGH, refund risk=HIGH.",
+              "confidence": 1.0
+            },
+            {
+              "case_id": "W8_V07",
+              "expected": "REQUEST_MORE_EVIDENCE",
+              "predicted": "REQUEST_MORE_EVIDENCE",
+              "reason": "Final ML safeguard: automatic refund requires ML confidence at least 0.90 and rule-based evidence confidence at least 0.80. ML=0.83, rule=0.70.",
+              "confidence": 0.83
+            },
+            {
+              "case_id": "W8_V08",
+              "expected": "REQUEST_MORE_EVIDENCE",
+              "predicted": "REQUEST_MORE_EVIDENCE",
+              "reason": "Final ML safeguard: automatic refund requires ML confidence at least 0.90 and rule-based evidence confidence at least 0.80. ML=0.97, rule=0.79.",
+              "confidence": 0.97
+            },
+            {
+              "case_id": "W8_V09",
+              "expected": "AUTO_REFUND",
+              "predicted": "AUTO_REFUND",
+              "reason": "Decision matrix result: confidence=HIGH, refund risk=LOW.",
+              "confidence": 0.98
+            },
+            {
+              "case_id": "W8_V10",
+              "expected": "AUTO_REFUND",
+              "predicted": "AUTO_REFUND",
+              "reason": "Decision matrix result: confidence=HIGH, refund risk=LOW.",
+              "confidence": 0.99
+            }
+          ]
+        }
+      }
+    },
+    "test": {
+      "input_sha256": "e5e819cc8c7277b1f0cab80a4df6ff57dcec04a24b67b7a7ef6e6508082824d2",
+      "labels_sha256": "b73ac008885a739d5fbfc56f149d47b734b0c38d33eeb23863c8056364bbbefe",
+      "methods": {
+        "baseline_rule": {
+          "summary": {
+            "total": 6,
+            "correct": 6,
+            "incorrect_auto_refunds": 0,
+            "unnecessary_reviews": 0,
+            "unnecessary_evidence_requests": 0
+          },
+          "cases": [
+            {
+              "case_id": "W8_T01",
+              "expected": "AUTO_REFUND",
+              "predicted": "AUTO_REFUND",
+              "reason": "Decision matrix result: confidence=HIGH, refund risk=LOW.",
+              "confidence": 0.88
+            },
+            {
+              "case_id": "W8_T02",
+              "expected": "AUTO_REFUND",
+              "predicted": "AUTO_REFUND",
+              "reason": "Decision matrix result: confidence=HIGH, refund risk=LOW.",
+              "confidence": 0.82
+            },
+            {
+              "case_id": "W8_T03",
+              "expected": "REQUEST_MORE_EVIDENCE",
+              "predicted": "REQUEST_MORE_EVIDENCE",
+              "reason": "Decision matrix result: confidence=MEDIUM, refund risk=LOW.",
+              "confidence": 0.65
+            },
+            {
+              "case_id": "W8_T04",
+              "expected": "REQUEST_MORE_EVIDENCE",
+              "predicted": "REQUEST_MORE_EVIDENCE",
+              "reason": "The damage module reports insufficient image evidence.",
+              "confidence": 0.95
+            },
+            {
+              "case_id": "W8_T05",
+              "expected": "HUMAN_REVIEW",
+              "predicted": "HUMAN_REVIEW",
+              "reason": "Refund-policy eligibility is not confirmed.",
+              "confidence": 0.95
+            },
+            {
+              "case_id": "W8_T06",
+              "expected": "HUMAN_REVIEW",
+              "predicted": "HUMAN_REVIEW",
+              "reason": "The damage module requires human review.",
+              "confidence": 0.95
+            }
+          ]
+        },
+        "baseline_ml": {
+          "summary": {
+            "total": 6,
+            "correct": 6,
+            "incorrect_auto_refunds": 0,
+            "unnecessary_reviews": 0,
+            "unnecessary_evidence_requests": 0
+          },
+          "cases": [
+            {
+              "case_id": "W8_T01",
+              "expected": "AUTO_REFUND",
+              "predicted": "AUTO_REFUND",
+              "reason": "Decision matrix result: confidence=HIGH, refund risk=LOW.",
+              "confidence": 1.0
+            },
+            {
+              "case_id": "W8_T02",
+              "expected": "AUTO_REFUND",
+              "predicted": "AUTO_REFUND",
+              "reason": "Decision matrix result: confidence=HIGH, refund risk=LOW.",
+              "confidence": 0.99
+            },
+            {
+              "case_id": "W8_T03",
+              "expected": "REQUEST_MORE_EVIDENCE",
+              "predicted": "REQUEST_MORE_EVIDENCE",
+              "reason": "Decision matrix result: confidence=MEDIUM, refund risk=LOW.",
+              "confidence": 0.63
+            },
+            {
+              "case_id": "W8_T04",
+              "expected": "REQUEST_MORE_EVIDENCE",
+              "predicted": "REQUEST_MORE_EVIDENCE",
+              "reason": "The damage module reports insufficient image evidence.",
+              "confidence": 0.67
+            },
+            {
+              "case_id": "W8_T05",
+              "expected": "HUMAN_REVIEW",
+              "predicted": "HUMAN_REVIEW",
+              "reason": "Refund-policy eligibility is not confirmed.",
+              "confidence": 0.83
+            },
+            {
+              "case_id": "W8_T06",
+              "expected": "HUMAN_REVIEW",
+              "predicted": "HUMAN_REVIEW",
+              "reason": "The damage module requires human review.",
+              "confidence": 0.89
+            }
+          ]
+        },
+        "final_rule": {
+          "summary": {
+            "total": 6,
+            "correct": 6,
+            "incorrect_auto_refunds": 0,
+            "unnecessary_reviews": 0,
+            "unnecessary_evidence_requests": 0
+          },
+          "cases": [
+            {
+              "case_id": "W8_T01",
+              "expected": "AUTO_REFUND",
+              "predicted": "AUTO_REFUND",
+              "reason": "Decision matrix result: confidence=HIGH, refund risk=LOW.",
+              "confidence": 0.88
+            },
+            {
+              "case_id": "W8_T02",
+              "expected": "AUTO_REFUND",
+              "predicted": "AUTO_REFUND",
+              "reason": "Decision matrix result: confidence=HIGH, refund risk=LOW.",
+              "confidence": 0.82
+            },
+            {
+              "case_id": "W8_T03",
+              "expected": "REQUEST_MORE_EVIDENCE",
+              "predicted": "REQUEST_MORE_EVIDENCE",
+              "reason": "Decision matrix result: confidence=MEDIUM, refund risk=LOW.",
+              "confidence": 0.65
+            },
+            {
+              "case_id": "W8_T04",
+              "expected": "REQUEST_MORE_EVIDENCE",
+              "predicted": "REQUEST_MORE_EVIDENCE",
+              "reason": "The damage module reports insufficient image evidence.",
+              "confidence": 0.95
+            },
+            {
+              "case_id": "W8_T05",
+              "expected": "HUMAN_REVIEW",
+              "predicted": "HUMAN_REVIEW",
+              "reason": "Refund-policy eligibility is not confirmed.",
+              "confidence": 0.95
+            },
+            {
+              "case_id": "W8_T06",
+              "expected": "HUMAN_REVIEW",
+              "predicted": "HUMAN_REVIEW",
+              "reason": "The damage module requires human review.",
+              "confidence": 0.95
+            }
+          ]
+        },
+        "final_ml": {
+          "summary": {
+            "total": 6,
+            "correct": 6,
+            "incorrect_auto_refunds": 0,
+            "unnecessary_reviews": 0,
+            "unnecessary_evidence_requests": 0
+          },
+          "cases": [
+            {
+              "case_id": "W8_T01",
+              "expected": "AUTO_REFUND",
+              "predicted": "AUTO_REFUND",
+              "reason": "Decision matrix result: confidence=HIGH, refund risk=LOW.",
+              "confidence": 1.0
+            },
+            {
+              "case_id": "W8_T02",
+              "expected": "AUTO_REFUND",
+              "predicted": "AUTO_REFUND",
+              "reason": "Decision matrix result: confidence=HIGH, refund risk=LOW.",
+              "confidence": 0.99
+            },
+            {
+              "case_id": "W8_T03",
+              "expected": "REQUEST_MORE_EVIDENCE",
+              "predicted": "REQUEST_MORE_EVIDENCE",
+              "reason": "Decision matrix result: confidence=MEDIUM, refund risk=LOW.",
+              "confidence": 0.63
+            },
+            {
+              "case_id": "W8_T04",
+              "expected": "REQUEST_MORE_EVIDENCE",
+              "predicted": "REQUEST_MORE_EVIDENCE",
+              "reason": "The damage module reports insufficient image evidence.",
+              "confidence": 0.67
+            },
+            {
+              "case_id": "W8_T05",
+              "expected": "HUMAN_REVIEW",
+              "predicted": "HUMAN_REVIEW",
+              "reason": "Refund-policy eligibility is not confirmed.",
+              "confidence": 0.83
+            },
+            {
+              "case_id": "W8_T06",
+              "expected": "HUMAN_REVIEW",
+              "predicted": "HUMAN_REVIEW",
+              "reason": "The damage module requires human review.",
+              "confidence": 0.89
+            }
+          ]
+        }
+      }
+    }
+  },
+  "source_sha256": {
+    "src/agent/agent.py": "2c1432d61ae086ddd237fb49bd35b5b863d84ed65603947e019ccf63eb003c21",
+    "src/agent/final_agent.py": "73c2db72204f07f68c7a07209758449334ebb2281c09af9bd1e63537a0b682d6",
+    "src/decision/decision.py": "0a88097b713d1c9fd67ad702a9960ea5568f8f3502aca710bfde46d71c1c27d0",
+    "src/decision/confidence.py": "9f5ebafad3f681226b977d973e185007596a288dbf7f8b1ae610d7b48c6bb95c"
+  }
+}
