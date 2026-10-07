@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="430" viewBox="0 0 760 430" role="img" aria-labelledby="title desc">
+<title id="title">Member 3 retrieval baseline comparison</title>
+<desc id="desc">Comparison of lexical baseline and intent-aware retrieval across three metrics on 60 synthetic queries.</desc>
+<style>.title{font:700 24px Arial;fill:#0F172A}.sub{font:14px Arial;fill:#475569}.label{font:600 15px Arial;fill:#1E293B}.value{font:600 13px Arial;fill:#0F172A}.legend{font:13px Arial;fill:#334155}</style>
+<rect width="760" height="430" fill="#F8FAFC" rx="16"/>
+<text x="30" y="42" class="title">Policy Retrieval Comparison</text>
+<text x="30" y="66" class="sub">Frozen controlled set: 60 synthetic labelled queries</text>
+<text x="30" y="105" class="label">Top-1 accuracy</text><rect x="190" y="81" width="265.2" height="24" rx="5" fill="#94A3B8"/><text x="470.2" y="99" class="value">61.7%</text><rect x="190" y="117" width="430.0" height="24" rx="5" fill="#2563EB"/><text x="635.0" y="135" class="value">100.0%</text><text x="30" y="210" class="label">Hit Rate@3</text><rect x="190" y="186" width="408.5" height="24" rx="5" fill="#94A3B8"/><text x="613.5" y="204" class="value">95.0%</text><rect x="190" y="222" width="430.0" height="24" rx="5" fill="#2563EB"/><text x="635.0" y="240" class="value">100.0%</text><text x="30" y="315" class="label">MRR</text><rect x="190" y="291" width="328.5" height="24" rx="5" fill="#94A3B8"/><text x="533.5" y="309" class="value">76.4%</text><rect x="190" y="327" width="430.0" height="24" rx="5" fill="#2563EB"/><text x="635.0" y="345" class="value">100.0%</text>
+<rect x="30" y="390" width="16" height="16" rx="3" fill="#94A3B8"/><text x="54" y="403" class="legend">Week 8 lexical baseline</text>
+<rect x="250" y="390" width="16" height="16" rx="3" fill="#2563EB"/><text x="274" y="403" class="legend">Week 9 intent-aware</text>
+</svg>

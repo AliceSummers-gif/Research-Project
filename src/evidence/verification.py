@@ -43,8 +43,11 @@ def _image_order_match(
     return 0.0
 
 
-def _days_since_purchase(order: OrderRecord, request_date: str) -> int:
-    return (date.fromisoformat(request_date) - date.fromisoformat(order.purchase_date)).days
+def _days_since_delivery(order: OrderRecord, request_date: str) -> int:
+    """Use delivery date for the policy window, with an explicit legacy fallback."""
+
+    policy_start = order.delivery_date or order.purchase_date
+    return (date.fromisoformat(request_date) - date.fromisoformat(policy_start)).days
 
 
 def _damage_type_is_covered(damage_type: str, policy: RetrievedPolicy) -> bool:
@@ -78,7 +81,7 @@ def verify_case(case: dict[str, Any]) -> VerifiedEvidence:
             case.get("claim_text", ""),
         ]
     )
-    policy = retrieve_best_policy(policy_query)
+    policy = retrieve_best_policy(policy_query, retailer=order.retailer)
     image_match = _image_order_match(case.get("detected_product", ""), order)
     eligible, reason = _policy_eligibility(case, order, policy, image_match)
 
@@ -104,10 +107,16 @@ def _policy_eligibility(
     if order.status.lower() != "delivered":
         return False, "Order is not in delivered status."
     if order.final_sale:
-        return False, "Final-sale products are not eligible for refund."
-    if _days_since_purchase(order, case["request_date"]) < 0:
-        return False, "Refund request date precedes purchase date."
-    if _days_since_purchase(order, case["request_date"]) > policy.refund_window_days:
+        return False, (
+            "Final-sale products are not eligible for automatic refund; "
+            "statutory defect rights require manual review."
+        )
+    excluded = {_normalize_product(value) for value in policy.excluded_categories}
+    if _normalize_product(order.product_category) in excluded:
+        return False, "Product category is excluded by the retrieved return policy."
+    if _days_since_delivery(order, case["request_date"]) < 0:
+        return False, "Refund request date precedes delivery date."
+    if _days_since_delivery(order, case["request_date"]) > policy.refund_window_days:
         return False, "Refund request is outside the policy window."
     if policy.requires_image and not case.get("image_present", False):
         return False, "Required image evidence is missing."

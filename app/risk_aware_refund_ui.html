@@ -104,7 +104,8 @@
 <script>
 const state={
   current:1, maxVisited:1, reason:'', description:'', files:[],
-  order:{id:'ORD001',product:'Black Jacket',price:'$129.00',date:'2026-08-01',status:'Delivered',category:'Jacket'},
+  order:{id:'ORD001',product:'Black Jacket',price:'$129.00',date:'2026-08-01',status:'Delivered',category:'Jacket',image:null,retailer:'H&M Australia'},
+  orders:[], demoImage:false,
   backend:null,
   confidence:.78, risk:.30, factors:{quality:.70,auth:.75,consistency:.85,complete:.80,order:.75},
   decision:'Auto Refund'
@@ -122,7 +123,7 @@ function goto(n){state.current=n;state.maxVisited=Math.max(state.maxVisited,n);r
 async function next(){if(state.current===2){await runBackend();return}if(state.current<6)goto(state.current+1)}
 function back(){if(state.current>1)goto(state.current-1)}
 async function runBackend(){
- const payload={case_id:'UI-DEMO-001',order_id:state.order.id,claim_text:state.description||'The black jacket arrived with a tear on the left sleeve.',detected_product:'Black Jacket',damage_type:'hole_or_tear',image_present:state.files.length>0,image_usable:true,image_quality:.90,damage_confidence:.88,claim_image_consistency:.92,request_date:'2026-08-15'};
+ const payload={case_id:'UI-DEMO-001',order_id:state.order.id,claim_text:state.description||'The garment arrived with visible damage.',detected_product:state.order.category,damage_type:state.description.toLowerCase().includes('stain')?'stain_or_spot':'hole_or_tear',image_present:state.files.length>0||state.demoImage,image_usable:true,image_quality:.90,damage_confidence:.88,claim_image_consistency:.92,request_date:'2026-08-15'};
  toast('Running Python retrieval and verification...');
  try{
   const response=await fetch('/api/evidence',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
@@ -149,16 +150,37 @@ function showBackendDecision(){
  $('#dConf').textContent=d.evidence_confidence+' · calculated';
  $('#dRisk').textContent=d.refund_risk+' · calculated';
 }
+async function loadOrderDatabase(){
+ try{
+  const response=await fetch('/api/orders'); const data=await response.json();
+  if(!response.ok)throw new Error(data.error||'Could not load orders');
+  state.orders=data.orders;
+  const list=$('#orderOptions'); if(list)list.innerHTML=state.orders.map(o=>`<option value="${o.order_id}">${o.product_name}</option>`).join('');
+  selectOrder('ORD001');
+ }catch(error){toast(error.message)}
+}
+function selectOrder(id){
+ const o=state.orders.find(x=>x.order_id===id.toUpperCase()); if(!o)return;
+ state.order={id:o.order_id,product:o.product_name,price:'$'+o.price.toFixed(2),date:o.purchase_date,status:o.status,category:o.product_category,image:o.image_evidence,retailer:o.retailer};
+ state.demoImage=false;
+ const card=$('#selectedOrder'); if(card)card.innerHTML=`<b>${o.product_name}</b><br><small>${o.retailer} · ${o.data_type} · ${o.status}</small>`;
+ const button=$('#useDemo'); if(button){button.disabled=!o.image_evidence;button.textContent=o.image_evidence?'Use linked demo photo':'No linked demo photo — upload your own';}
+}
+function useDemoImage(){
+ if(!state.order.image)return; state.demoImage=true;
+ const path='/'+state.order.image.image_path; $('#thumbs').innerHTML=`<img class="thumb" src="${path}" alt="Traceable demonstration garment">`;
+ toast('Linked CC BY 4.0 demo image selected');
+}
 function mount(){
  $('#screens').innerHTML = step1()+step2()+step3()+step4()+step5()+step6();
- bind(); renderProgress(); goto(1);
+ bind(); renderProgress(); goto(1); loadOrderDatabase();
 }
 function step1(){return `<section class="screen" id="screen1"><div class="grid">
  <div class="panel"><div class="panel-head"><div><div class="eyebrow">Step 1</div><h2>Submit Refund Request</h2></div><span class="badge">Customer portal</span></div><div class="panel-body">
-   <div class="field"><label>Order ID</label><input type="text" id="orderId" value="ORD001"></div>
+   <div class="field"><label>Order ID</label><input type="text" id="orderId" list="orderOptions" value="ORD001"><datalist id="orderOptions"></datalist><div id="selectedOrder" class="helper">Loading 70 traceable synthetic order records…</div></div>
    <div class="field"><label>Refund reason</label><select id="reason"><option value="">Select a reason</option><option>Product arrived damaged</option><option>Wrong item received</option><option>Item not as described</option><option>Missing parts / accessories</option><option>Changed my mind</option></select></div>
    <div class="field"><label>Please describe your issue</label><textarea id="desc" placeholder="Example: The jacket arrived with a visible tear on the left sleeve."></textarea></div>
-   <div class="field"><label>Upload images / videos</label><label class="upload" id="drop"><input id="fileInput" type="file" accept="image/*" multiple><div class="upload-icon">🖼️</div><div class="upload-title">Drag & drop or click to upload</div><div class="upload-sub">JPG, PNG · up to 6 files for this prototype</div></label><div class="thumbs" id="thumbs"></div></div>
+   <div class="field"><label>Evidence image</label><button type="button" class="btn ghost" id="useDemo" onclick="useDemoImage()">Use linked demo photo</button><label class="upload" id="drop" style="margin-top:10px"><input id="fileInput" type="file" accept="image/*" multiple><div class="upload-icon">🖼️</div><div class="upload-title">Or upload your own image</div><div class="upload-sub">JPG, PNG · up to 6 files for this prototype</div></label><div class="thumbs" id="thumbs"></div></div>
    <div class="btn-row"><button class="btn primary" id="submitReq">Submit request →</button></div>
  </div></div>
  <div class="panel"><div class="panel-head"><div><div class="eyebrow">Order</div><h2>Order Summary</h2></div><span class="badge">Verified</span></div><div class="panel-body">
@@ -213,7 +235,7 @@ function step6(){return `<section class="screen" id="screen6"><div class="grid">
  <div class="panel"><div class="panel-head"><div><div class="eyebrow">Reviewer</div><h2>Decision</h2></div></div><div class="panel-body"><div class="radio-list"><label><input type="radio" name="review" value="Approve (Auto Refund)" checked> Approve (Auto Refund)</label><label><input type="radio" name="review" value="Request More Evidence"> Request More Evidence</label><label><input type="radio" name="review" value="Escalate to Specialist"> Escalate to Specialist</label><label><input type="radio" name="review" value="Reject Refund"> Reject Refund</label></div><div class="field"><label>Reviewer notes <small>(optional)</small></label><textarea id="reviewNotes" placeholder="Add review rationale..."></textarea></div><div class="btn-row"><button class="btn ghost" onclick="back()">← Back</button><button class="btn success" id="submitReview">Submit decision</button></div></div></div>
  </div></section>`}
 function bind(){
- $('#reason').addEventListener('change',e=>state.reason=e.target.value);$('#desc').addEventListener('input',e=>state.description=e.target.value);$('#orderId').addEventListener('input',e=>state.order.id=e.target.value.trim());
+ $('#reason').addEventListener('change',e=>state.reason=e.target.value);$('#desc').addEventListener('input',e=>state.description=e.target.value);$('#orderId').addEventListener('change',e=>selectOrder(e.target.value.trim()));
  const drop=$('#drop'),inp=$('#fileInput');drop.addEventListener('dragover',e=>{e.preventDefault();drop.classList.add('drag')});drop.addEventListener('dragleave',()=>drop.classList.remove('drag'));drop.addEventListener('drop',e=>{e.preventDefault();drop.classList.remove('drag');handleFiles(e.dataTransfer.files)});inp.addEventListener('change',e=>handleFiles(e.target.files));
  $('#submitReq').onclick=()=>{state.reason=$('#reason').value;state.description=$('#desc').value;if(!state.reason){toast('Please select a refund reason first');return;}goto(2);syncClaim()};
  document.querySelectorAll('.acc-head').forEach(h=>h.onclick=()=>h.parentElement.classList.toggle('open'));
@@ -221,7 +243,7 @@ function bind(){
  document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.tabpane').forEach(x=>x.classList.remove('active'));t.classList.add('active');$('#tab-'+t.dataset.tab).classList.add('active')});
  $('#submitReview').onclick=()=>{const choice=document.querySelector('input[name=review]:checked').value;toast('Reviewer decision submitted: '+choice)};
 }
-function handleFiles(fileList){state.files=[...fileList].slice(0,6);const thumbs=$('#thumbs');thumbs.innerHTML='';state.files.forEach(f=>{const img=document.createElement('img');img.className='thumb';img.src=URL.createObjectURL(f);thumbs.appendChild(img)});updatePreview();}
+function handleFiles(fileList){state.demoImage=false;state.files=[...fileList].slice(0,6);const thumbs=$('#thumbs');thumbs.innerHTML='';state.files.forEach(f=>{const img=document.createElement('img');img.className='thumb';img.src=URL.createObjectURL(f);thumbs.appendChild(img)});updatePreview();}
 function updatePreview(){if(state.files[0]){const u=URL.createObjectURL(state.files[0]);$('#analysisPreview').innerHTML=`<img src="${u}">`;$('#reviewImgs').innerHTML='<div class="thumbs" style="grid-template-columns:repeat(3,1fr)"></div>';const box=$('#reviewImgs .thumbs');state.files.forEach(f=>{const i=document.createElement('img');i.className='thumb';i.src=URL.createObjectURL(f);box.appendChild(i)})}}
 function syncClaim(){const r=state.reason||'Product arrived damaged';$('#claimIssue').textContent=r;$('#reviewClaim').textContent=(state.description||r)+'.'; if(r.includes('Changed')){$('#analysisText').textContent='No physical defect claim was supplied. Visual evidence is treated as optional and the policy fit becomes the main decision signal.'}}
 function animateBars(){setTimeout(()=>document.querySelectorAll('#screen2 .bar i').forEach(i=>i.style.width=i.dataset.w+'%'),70)}

@@ -17,7 +17,11 @@ DATASET = Path("data/test_cases/member3_week8_rag_evaluation.json")
 OUTPUT = Path("data/results/member3_week8_rag_metrics.json")
 
 
-def evaluate(cases: list[dict[str, str]]) -> dict[str, object]:
+def evaluate(
+    cases: list[dict[str, str]],
+    *,
+    strategy: str = "lexical",
+) -> dict[str, object]:
     top1_correct = 0
     hit_at_3 = 0
     reciprocal_rank_total = 0.0
@@ -27,7 +31,7 @@ def evaluate(cases: list[dict[str, str]]) -> dict[str, object]:
 
     for case in cases:
         expected = case["expected_policy_id"]
-        results = retrieve_policies(case["query"], top_k=3)
+        results = retrieve_policies(case["query"], top_k=3, strategy=strategy)
         ranking = [result.policy_id for result in results]
         policy_totals[expected] += 1
 
@@ -51,7 +55,8 @@ def evaluate(cases: list[dict[str, str]]) -> dict[str, object]:
 
     total = len(cases)
     return {
-        "evaluation_name": "Member 3 Week 8 lexical RAG baseline",
+        "evaluation_name": f"Member 3 policy retrieval ({strategy})",
+        "retrieval_strategy": strategy,
         "dataset_type": "synthetic_labelled_evaluation",
         "total_cases": total,
         "top_1_accuracy": top1_correct / total if total else 0.0,
@@ -64,7 +69,7 @@ def evaluate(cases: list[dict[str, str]]) -> dict[str, object]:
         "top_1_failures": failures,
         "limitations": [
             "Cases are synthetic and do not establish real-world accuracy.",
-            "The policy corpus contains only four mock policies.",
+            "The evaluation covers four controlled policy or safety-rule families.",
             "Queries were authored for controlled baseline evaluation.",
         ],
     }
