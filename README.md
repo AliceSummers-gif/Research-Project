@@ -32,7 +32,8 @@ not consume GitHub Actions time on every code push.
 Member 3 retrieves mock orders and policies, verifies evidence completeness
 and policy eligibility, and supplies traceable features to the decision agent.
 The final Week 9 evaluation compares the frozen lexical baseline with the
-intent-aware retriever and runs the 12-case evidence regression. See
+intent-aware retriever, validates 120 balanced evidence cases, and retains the
+12-case legacy regression. See
 `docs/member3_week9_final_report.md` and reproduce the saved results with:
 
 ```bash

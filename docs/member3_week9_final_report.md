@@ -34,11 +34,18 @@ phrase such as "no visible hole" is not treated as positive damage evidence.
 
 ## Controlled evaluation
 
-The frozen evaluation set contains 60 synthetic labelled queries, with 15
-queries for each policy family. The evidence regression contains 12 controlled
-cases covering valid evidence, missing images, expired requests, final-sale
-items, undelivered orders, no visible damage, product mismatch, unsupported
-damage, unknown orders, and broken zips.
+The primary controlled evaluation contains 180 cases:
+
+- 60 synthetic labelled retrieval queries, with 15 queries for each policy
+  family;
+- 120 synthetic evidence-verification cases, with 12 cases in each of 10
+  scenarios.
+
+The 10 evidence scenarios cover valid hole evidence, valid stain evidence,
+missing images, unusable images, no visible damage, low claim-image
+consistency, product mismatch, expired requests, final-sale items, and unknown
+orders. The original 12-case evidence set remains as a separate regression
+smoke test covering legacy labels and edge conditions.
 
 Final values are generated in
 `data/results/member3_week9_final_results.json`. They must be interpreted as
@@ -50,6 +57,8 @@ controlled prototype results rather than real-world model accuracy.
 | Hit Rate@3 | 95.0% | 100.0% |
 | Mean Reciprocal Rank | 0.764 | 1.000 |
 | Top-1 failures | 23 | 0 |
+
+![Policy retrieval comparison](figures/member3_retrieval_comparison.svg)
 
 All 23 baseline Top-1 failures were resolved on the frozen controlled set, and
 no new regression case was introduced. Each of the four policy families
@@ -70,8 +79,15 @@ The final regression confirms that Member 3 can:
   and a human-readable reason;
 - pass the structured output to the downstream risk-aware decision module.
 
-All 12 controlled evidence cases matched their expected eligibility labels.
-The focused automated test suite completed with 25 passing tests. An additional
+All 120 primary evidence cases matched both their expected eligibility labels
+and expected reason categories: 24 true positives, 96 true negatives, zero
+false positives, and zero false negatives. Every scenario achieved a 100% pass
+rate on this deterministic controlled set. The original 12 regression cases
+also passed.
+
+![Evidence validation by scenario](figures/member3_evidence_scenario_results.svg)
+
+The focused automated test suite completed successfully. An additional
 Student 4 visual-pipeline test requires the optional Pillow dependency and is
 therefore reported separately from the dependency-free Member 3 test result.
 
@@ -80,7 +96,9 @@ therefore reported separately from the dependency-free Member 3 test result.
 From the repository root, run:
 
 ```bash
+python3 -B scripts/member3_week9_generate_evidence_dataset.py
 python3 -B scripts/member3_week9_final_evaluation.py
+python3 -B scripts/member3_week9_generate_figures.py
 .venv/bin/python -B -m pytest -q \
   tests/test_member3_week4_week5.py \
   tests/test_member3_week6_pipeline.py \

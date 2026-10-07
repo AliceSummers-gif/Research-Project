@@ -16,6 +16,9 @@ from src.evidence.verification import verify_case
 
 RETRIEVAL_DATASET = PROJECT_ROOT / "data/test_cases/member3_week8_rag_evaluation.json"
 EVIDENCE_DATASET = PROJECT_ROOT / "data/test_cases/member3_cases.json"
+EVIDENCE_VALIDATION_DATASET = (
+    PROJECT_ROOT / "data/test_cases/member3_week9_evidence_evaluation.json"
+)
 OUTPUT = PROJECT_ROOT / "data/results/member3_week9_final_results.json"
 
 
@@ -26,19 +29,40 @@ def _load(path: Path) -> list[dict]:
 def evaluate_evidence_regression(cases: list[dict]) -> dict[str, object]:
     failures = []
     reason_counts: Counter[str] = Counter()
+    scenario_totals: Counter[str] = Counter()
+    scenario_passed: Counter[str] = Counter()
+    confusion = {"true_positive": 0, "true_negative": 0, "false_positive": 0, "false_negative": 0}
 
     for case in cases:
         result = verify_case(case)
         reason_counts[result.reason] += 1
-        if result.policy_eligible != case["expected_eligible"]:
+        scenario = case.get("scenario", "legacy_regression")
+        scenario_totals[scenario] += 1
+        eligibility_matches = result.policy_eligible == case["expected_eligible"]
+        reason_matches = (
+            "expected_reason" not in case or result.reason == case["expected_reason"]
+        )
+        if eligibility_matches and reason_matches:
+            scenario_passed[scenario] += 1
+        else:
             failures.append(
                 {
                     "case_id": case["case_id"],
                     "expected_eligible": case["expected_eligible"],
                     "actual_eligible": result.policy_eligible,
+                    "expected_reason": case.get("expected_reason"),
                     "reason": result.reason,
                 }
             )
+
+        if case["expected_eligible"] and result.policy_eligible:
+            confusion["true_positive"] += 1
+        elif not case["expected_eligible"] and not result.policy_eligible:
+            confusion["true_negative"] += 1
+        elif result.policy_eligible:
+            confusion["false_positive"] += 1
+        else:
+            confusion["false_negative"] += 1
 
     passed = len(cases) - len(failures)
     return {
@@ -47,12 +71,18 @@ def evaluate_evidence_regression(cases: list[dict]) -> dict[str, object]:
         "pass_rate": passed / len(cases) if cases else 0.0,
         "failures": failures,
         "outcome_reason_counts": dict(sorted(reason_counts.items())),
+        "eligibility_confusion_matrix": confusion,
+        "scenario_pass_rates": {
+            scenario: scenario_passed[scenario] / total
+            for scenario, total in sorted(scenario_totals.items())
+        },
     }
 
 
 def build_final_results() -> dict[str, object]:
     retrieval_cases = _load(RETRIEVAL_DATASET)
     evidence_cases = _load(EVIDENCE_DATASET)
+    evidence_validation_cases = _load(EVIDENCE_VALIDATION_DATASET)
     baseline = evaluate(retrieval_cases, strategy="lexical")
     refined = evaluate(retrieval_cases, strategy="intent_aware")
 
@@ -80,6 +110,7 @@ def build_final_results() -> dict[str, object]:
             ),
         },
         "evidence_regression": evaluate_evidence_regression(evidence_cases),
+        "evidence_validation": evaluate_evidence_regression(evidence_validation_cases),
         "limitations": [
             "All evaluation records are synthetic or controlled project data.",
             "The policy corpus contains four mock policy documents.",
@@ -95,9 +126,14 @@ def main() -> None:
     OUTPUT.write_text(json.dumps(results, indent=2) + "\n", encoding="utf-8")
     comparison = results["retrieval_comparison"]
     evidence = results["evidence_regression"]
+    validation = results["evidence_validation"]
     print(f"Baseline Top-1: {comparison['baseline']['top_1_accuracy']:.3f}")
     print(f"Refined Top-1:  {comparison['refined']['top_1_accuracy']:.3f}")
     print(f"Evidence cases: {evidence['passed_cases']}/{evidence['total_cases']} passed")
+    print(
+        "Evidence validation: "
+        f"{validation['passed_cases']}/{validation['total_cases']} passed"
+    )
     print(f"Wrote {OUTPUT.relative_to(PROJECT_ROOT)}")
 
 
