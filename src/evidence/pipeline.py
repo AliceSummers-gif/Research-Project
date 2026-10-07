@@ -42,7 +42,8 @@ def build_evidence_chain(
         policy = retrieve_best_policy(
             " ".join(
                 [order.product_category, member2.damage_type, case_input.claim_text]
-            )
+            ),
+            retailer=order.retailer,
         )
 
     member3 = Member3Output(

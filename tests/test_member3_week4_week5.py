@@ -10,8 +10,8 @@ def load_cases():
         return json.load(case_file)
 
 
-def test_week4_has_twelve_orders_and_cases():
-    assert len(load_orders()) == 12
+def test_order_database_has_seventy_traceable_records_and_twelve_legacy_cases():
+    assert len(load_orders()) == 70
     assert len(load_cases()) == 12
 
 
@@ -38,6 +38,16 @@ def test_wrong_item_query_retrieves_wrong_item_policy():
     assert policy.policy_id == "POL-WRONG-ITEM-14"
 
 
+def test_official_multi_retailer_policy_sources_are_selectable():
+    zara = retrieve_best_policy("defective jacket hole", retailer="Zara Australia")
+    uniqlo = retrieve_best_policy("faulty shirt stain", retailer="UNIQLO Australia")
+
+    assert zara.policy_id == "ZARA-AU-DAMAGE-30"
+    assert zara.source_url == "https://www.zara.com/au/en/help-center/HowToReturn"
+    assert uniqlo.policy_id == "UNIQLO-AU-DAMAGE-30"
+    assert uniqlo.source_url.startswith("https://faq-au.uniqlo.com/")
+
+
 def test_all_mock_cases_match_expected_eligibility():
     for case in load_cases():
         result = verify_case(case)
@@ -53,4 +63,7 @@ def test_verified_case_is_traceable():
     assert result.image_order_match == 1.0
     assert result.policy_eligible is True
     assert result.refund_amount == 129.0
-    assert result.policy_source == "Mock Refund Policy, section 3.2"
+    assert result.policy_source == (
+        "H&M Australia Terms and Conditions, sections 5, 6 and 10"
+    )
+    assert "hm.com" in retrieve_best_policy("jacket damage").source_url

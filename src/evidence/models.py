@@ -13,6 +13,10 @@ class OrderRecord:
     purchase_date: str
     status: str
     final_sale: bool = False
+    delivery_date: Optional[str] = None
+    data_type: str = "synthetic_order"
+    image_evidence: Optional[dict[str, Any]] = None
+    retailer: str = "H&M Australia"
 
 
 @dataclass(frozen=True)
@@ -25,6 +29,13 @@ class RetrievedPolicy:
     refund_window_days: int
     requires_image: bool
     eligible_damage_types: tuple[str, ...]
+    policy_kind: str = "retailer_policy"
+    source_url: Optional[str] = None
+    source_updated_date: Optional[str] = None
+    retrieved_date: Optional[str] = None
+    excluded_categories: tuple[str, ...] = ()
+    return_fee_aud: Optional[float] = None
+    retailer: str = "H&M Australia"
 
 
 @dataclass(frozen=True)

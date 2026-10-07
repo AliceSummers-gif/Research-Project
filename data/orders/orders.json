@@ -1,14 +1,1402 @@
 [
-  {"order_id":"ORD001","product_name":"Black Jacket","product_category":"Jacket","price":129.0,"purchase_date":"2026-08-01","status":"delivered","final_sale":false},
-  {"order_id":"ORD002","product_name":"Grey Hoodie","product_category":"Hoodie","price":79.0,"purchase_date":"2026-08-02","status":"delivered","final_sale":false},
-  {"order_id":"ORD003","product_name":"White T-Shirt","product_category":"T-Shirt","price":35.0,"purchase_date":"2026-08-03","status":"delivered","final_sale":false},
-  {"order_id":"ORD004","product_name":"Blue Jacket","product_category":"Jacket","price":220.0,"purchase_date":"2026-06-01","status":"delivered","final_sale":false},
-  {"order_id":"ORD005","product_name":"Green Hoodie","product_category":"Hoodie","price":95.0,"purchase_date":"2026-08-05","status":"delivered","final_sale":true},
-  {"order_id":"ORD006","product_name":"Red Jacket","product_category":"Jacket","price":149.0,"purchase_date":"2026-08-06","status":"processing","final_sale":false},
-  {"order_id":"ORD007","product_name":"Black Hoodie","product_category":"Hoodie","price":89.0,"purchase_date":"2026-08-07","status":"delivered","final_sale":false},
-  {"order_id":"ORD008","product_name":"Navy T-Shirt","product_category":"T-Shirt","price":42.0,"purchase_date":"2026-08-08","status":"delivered","final_sale":false},
-  {"order_id":"ORD009","product_name":"Brown Jacket","product_category":"Jacket","price":189.0,"purchase_date":"2026-08-09","status":"delivered","final_sale":false},
-  {"order_id":"ORD010","product_name":"Cream Hoodie","product_category":"Hoodie","price":110.0,"purchase_date":"2026-08-10","status":"delivered","final_sale":false},
-  {"order_id":"ORD011","product_name":"Yellow T-Shirt","product_category":"T-Shirt","price":39.0,"purchase_date":"2026-08-11","status":"delivered","final_sale":false},
-  {"order_id":"ORD012","product_name":"Leather Jacket","product_category":"Jacket","price":499.0,"purchase_date":"2026-08-12","status":"delivered","final_sale":false}
+  {
+    "order_id": "ORD001",
+    "product_name": "Black Jacket",
+    "product_category": "Jacket",
+    "price": 129.0,
+    "purchase_date": "2026-08-01",
+    "status": "delivered",
+    "final_sale": false,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-08-05",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_holes",
+      "source_image_id": "H001",
+      "image_path": "data/Week4_damage_dataset_v1/images/holes_35/hole_001.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD002",
+    "product_name": "Grey Hoodie",
+    "product_category": "Hoodie",
+    "price": 79.0,
+    "purchase_date": "2026-08-02",
+    "status": "delivered",
+    "final_sale": false,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-08-06",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_holes",
+      "source_image_id": "H002",
+      "image_path": "data/Week4_damage_dataset_v1/images/holes_35/hole_002.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD003",
+    "product_name": "White T-Shirt",
+    "product_category": "T-Shirt",
+    "price": 35.0,
+    "purchase_date": "2026-08-03",
+    "status": "delivered",
+    "final_sale": false,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-08-07",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_holes",
+      "source_image_id": "H003",
+      "image_path": "data/Week4_damage_dataset_v1/images/holes_35/hole_003.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD004",
+    "product_name": "Blue Jacket",
+    "product_category": "Jacket",
+    "price": 220.0,
+    "purchase_date": "2026-06-01",
+    "status": "delivered",
+    "final_sale": false,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-06-05",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_holes",
+      "source_image_id": "H004",
+      "image_path": "data/Week4_damage_dataset_v1/images/holes_35/hole_004.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD005",
+    "product_name": "Green Hoodie",
+    "product_category": "Hoodie",
+    "price": 95.0,
+    "purchase_date": "2026-08-05",
+    "status": "delivered",
+    "final_sale": true,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-08-09",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_holes",
+      "source_image_id": "H005",
+      "image_path": "data/Week4_damage_dataset_v1/images/holes_35/hole_005.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD006",
+    "product_name": "Red Jacket",
+    "product_category": "Jacket",
+    "price": 149.0,
+    "purchase_date": "2026-08-06",
+    "status": "processing",
+    "final_sale": false,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-08-10",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_holes",
+      "source_image_id": "H006",
+      "image_path": "data/Week4_damage_dataset_v1/images/holes_35/hole_006.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD007",
+    "product_name": "Black Hoodie",
+    "product_category": "Hoodie",
+    "price": 89.0,
+    "purchase_date": "2026-08-07",
+    "status": "delivered",
+    "final_sale": false,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-08-11",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_holes",
+      "source_image_id": "H007",
+      "image_path": "data/Week4_damage_dataset_v1/images/holes_35/hole_007.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD008",
+    "product_name": "Navy T-Shirt",
+    "product_category": "T-Shirt",
+    "price": 42.0,
+    "purchase_date": "2026-08-08",
+    "status": "delivered",
+    "final_sale": false,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-08-12",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_holes",
+      "source_image_id": "H008",
+      "image_path": "data/Week4_damage_dataset_v1/images/holes_35/hole_008.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD009",
+    "product_name": "Brown Jacket",
+    "product_category": "Jacket",
+    "price": 189.0,
+    "purchase_date": "2026-08-09",
+    "status": "delivered",
+    "final_sale": false,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-08-13",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_holes",
+      "source_image_id": "H009",
+      "image_path": "data/Week4_damage_dataset_v1/images/holes_35/hole_009.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD010",
+    "product_name": "Cream Hoodie",
+    "product_category": "Hoodie",
+    "price": 110.0,
+    "purchase_date": "2026-08-10",
+    "status": "delivered",
+    "final_sale": false,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-08-14",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_holes",
+      "source_image_id": "H010",
+      "image_path": "data/Week4_damage_dataset_v1/images/holes_35/hole_010.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD011",
+    "product_name": "Yellow T-Shirt",
+    "product_category": "T-Shirt",
+    "price": 39.0,
+    "purchase_date": "2026-08-11",
+    "status": "delivered",
+    "final_sale": false,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-08-15",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_holes",
+      "source_image_id": "H011",
+      "image_path": "data/Week4_damage_dataset_v1/images/holes_35/hole_011.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD012",
+    "product_name": "Leather Jacket",
+    "product_category": "Jacket",
+    "price": 499.0,
+    "purchase_date": "2026-08-12",
+    "status": "delivered",
+    "final_sale": false,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-08-16",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_holes",
+      "source_image_id": "H012",
+      "image_path": "data/Week4_damage_dataset_v1/images/holes_35/hole_012.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD013",
+    "product_name": "Black Jacket",
+    "product_category": "Jacket",
+    "price": 141.0,
+    "purchase_date": "2026-07-24",
+    "status": "processing",
+    "final_sale": false,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-07-28",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_holes",
+      "source_image_id": "H013",
+      "image_path": "data/Week4_damage_dataset_v1/images/holes_35/hole_013.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD014",
+    "product_name": "Grey Hoodie",
+    "product_category": "Hoodie",
+    "price": 95.0,
+    "purchase_date": "2026-07-27",
+    "status": "delivered",
+    "final_sale": false,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-07-31",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_holes",
+      "source_image_id": "H014",
+      "image_path": "data/Week4_damage_dataset_v1/images/holes_35/hole_014.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD015",
+    "product_name": "White T-Shirt",
+    "product_category": "T-Shirt",
+    "price": 35.0,
+    "purchase_date": "2026-07-30",
+    "status": "delivered",
+    "final_sale": false,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-08-03",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_holes",
+      "source_image_id": "H015",
+      "image_path": "data/Week4_damage_dataset_v1/images/holes_35/hole_015.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD016",
+    "product_name": "Blue Jacket",
+    "product_category": "Jacket",
+    "price": 224.0,
+    "purchase_date": "2026-08-02",
+    "status": "delivered",
+    "final_sale": false,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-08-06",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_holes",
+      "source_image_id": "H016",
+      "image_path": "data/Week4_damage_dataset_v1/images/holes_35/hole_016.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD017",
+    "product_name": "Green Hoodie",
+    "product_category": "Hoodie",
+    "price": 103.0,
+    "purchase_date": "2026-08-05",
+    "status": "cancelled",
+    "final_sale": false,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-08-09",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_holes",
+      "source_image_id": "H017",
+      "image_path": "data/Week4_damage_dataset_v1/images/holes_35/hole_017.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD018",
+    "product_name": "Red Jacket",
+    "product_category": "Jacket",
+    "price": 161.0,
+    "purchase_date": "2026-08-08",
+    "status": "delivered",
+    "final_sale": false,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-08-12",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_holes",
+      "source_image_id": "H018",
+      "image_path": "data/Week4_damage_dataset_v1/images/holes_35/hole_018.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD019",
+    "product_name": "Black Hoodie",
+    "product_category": "Hoodie",
+    "price": 105.0,
+    "purchase_date": "2026-08-11",
+    "status": "delivered",
+    "final_sale": false,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-08-15",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_holes",
+      "source_image_id": "H019",
+      "image_path": "data/Week4_damage_dataset_v1/images/holes_35/hole_019.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD020",
+    "product_name": "Navy T-Shirt",
+    "product_category": "T-Shirt",
+    "price": 42.0,
+    "purchase_date": "2026-08-14",
+    "status": "delivered",
+    "final_sale": false,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-08-18",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_holes",
+      "source_image_id": "H020",
+      "image_path": "data/Week4_damage_dataset_v1/images/holes_35/hole_020.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD021",
+    "product_name": "Brown Jacket",
+    "product_category": "Jacket",
+    "price": 193.0,
+    "purchase_date": "2026-08-17",
+    "status": "delivered",
+    "final_sale": false,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-08-21",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_holes",
+      "source_image_id": "H021",
+      "image_path": "data/Week4_damage_dataset_v1/images/holes_35/hole_021.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD022",
+    "product_name": "Cream Hoodie",
+    "product_category": "Hoodie",
+    "price": 118.0,
+    "purchase_date": "2026-08-20",
+    "status": "delivered",
+    "final_sale": true,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-08-24",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_holes",
+      "source_image_id": "H022",
+      "image_path": "data/Week4_damage_dataset_v1/images/holes_35/hole_022.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD023",
+    "product_name": "Yellow T-Shirt",
+    "product_category": "T-Shirt",
+    "price": 51.0,
+    "purchase_date": "2026-08-23",
+    "status": "delivered",
+    "final_sale": false,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-08-27",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_holes",
+      "source_image_id": "H023",
+      "image_path": "data/Week4_damage_dataset_v1/images/holes_35/hole_023.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD024",
+    "product_name": "Leather Jacket",
+    "product_category": "Jacket",
+    "price": 515.0,
+    "purchase_date": "2026-08-26",
+    "status": "delivered",
+    "final_sale": false,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-08-30",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_holes",
+      "source_image_id": "H024",
+      "image_path": "data/Week4_damage_dataset_v1/images/holes_35/hole_024.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD025",
+    "product_name": "Black Jacket",
+    "product_category": "Jacket",
+    "price": 129.0,
+    "purchase_date": "2026-06-15",
+    "status": "delivered",
+    "final_sale": false,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-06-19",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_holes",
+      "source_image_id": "H025",
+      "image_path": "data/Week4_damage_dataset_v1/images/holes_35/hole_025.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD026",
+    "product_name": "Grey Hoodie",
+    "product_category": "Hoodie",
+    "price": 83.0,
+    "purchase_date": "2026-06-18",
+    "status": "processing",
+    "final_sale": false,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-06-22",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_holes",
+      "source_image_id": "H026",
+      "image_path": "data/Week4_damage_dataset_v1/images/holes_35/hole_026.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD027",
+    "product_name": "White T-Shirt",
+    "product_category": "T-Shirt",
+    "price": 43.0,
+    "purchase_date": "2026-06-21",
+    "status": "delivered",
+    "final_sale": false,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-06-25",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_holes",
+      "source_image_id": "H027",
+      "image_path": "data/Week4_damage_dataset_v1/images/holes_35/hole_027.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD028",
+    "product_name": "Blue Jacket",
+    "product_category": "Jacket",
+    "price": 232.0,
+    "purchase_date": "2026-06-24",
+    "status": "delivered",
+    "final_sale": false,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-06-28",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_holes",
+      "source_image_id": "H028",
+      "image_path": "data/Week4_damage_dataset_v1/images/holes_35/hole_028.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD029",
+    "product_name": "Green Hoodie",
+    "product_category": "Hoodie",
+    "price": 111.0,
+    "purchase_date": "2026-06-27",
+    "status": "delivered",
+    "final_sale": false,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-07-01",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_holes",
+      "source_image_id": "H029",
+      "image_path": "data/Week4_damage_dataset_v1/images/holes_35/hole_029.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD030",
+    "product_name": "Red Jacket",
+    "product_category": "Jacket",
+    "price": 149.0,
+    "purchase_date": "2026-06-30",
+    "status": "delivered",
+    "final_sale": false,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-07-04",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_holes",
+      "source_image_id": "H030",
+      "image_path": "data/Week4_damage_dataset_v1/images/holes_35/hole_030.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD031",
+    "product_name": "Black Hoodie",
+    "product_category": "Hoodie",
+    "price": 93.0,
+    "purchase_date": "2026-07-03",
+    "status": "delivered",
+    "final_sale": false,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-07-07",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_holes",
+      "source_image_id": "H031",
+      "image_path": "data/Week4_damage_dataset_v1/images/holes_35/hole_031.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD032",
+    "product_name": "Navy T-Shirt",
+    "product_category": "T-Shirt",
+    "price": 50.0,
+    "purchase_date": "2026-07-06",
+    "status": "delivered",
+    "final_sale": false,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-07-10",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_holes",
+      "source_image_id": "H032",
+      "image_path": "data/Week4_damage_dataset_v1/images/holes_35/hole_032.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD033",
+    "product_name": "Brown Jacket",
+    "product_category": "Jacket",
+    "price": 201.0,
+    "purchase_date": "2026-07-09",
+    "status": "delivered",
+    "final_sale": true,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-07-13",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_holes",
+      "source_image_id": "H033",
+      "image_path": "data/Week4_damage_dataset_v1/images/holes_35/hole_033.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD034",
+    "product_name": "Cream Hoodie",
+    "product_category": "Hoodie",
+    "price": 126.0,
+    "purchase_date": "2026-07-12",
+    "status": "cancelled",
+    "final_sale": false,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-07-16",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_holes",
+      "source_image_id": "H034",
+      "image_path": "data/Week4_damage_dataset_v1/images/holes_35/hole_034.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD035",
+    "product_name": "Yellow T-Shirt",
+    "product_category": "T-Shirt",
+    "price": 39.0,
+    "purchase_date": "2026-07-15",
+    "status": "delivered",
+    "final_sale": false,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-07-19",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_holes",
+      "source_image_id": "H035",
+      "image_path": "data/Week4_damage_dataset_v1/images/holes_35/hole_035.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD036",
+    "product_name": "Leather Jacket",
+    "product_category": "Jacket",
+    "price": 503.0,
+    "purchase_date": "2026-07-18",
+    "status": "delivered",
+    "final_sale": false,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-07-22",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_spots",
+      "source_image_id": "S001",
+      "image_path": "data/Week4_damage_dataset_v1/images/spots_35/spot_001.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD037",
+    "product_name": "Black Jacket",
+    "product_category": "Jacket",
+    "price": 137.0,
+    "purchase_date": "2026-07-21",
+    "status": "delivered",
+    "final_sale": false,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-07-25",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_spots",
+      "source_image_id": "S002",
+      "image_path": "data/Week4_damage_dataset_v1/images/spots_35/spot_002.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD038",
+    "product_name": "Grey Hoodie",
+    "product_category": "Hoodie",
+    "price": 91.0,
+    "purchase_date": "2026-07-24",
+    "status": "delivered",
+    "final_sale": false,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-07-28",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_spots",
+      "source_image_id": "S003",
+      "image_path": "data/Week4_damage_dataset_v1/images/spots_35/spot_003.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD039",
+    "product_name": "White T-Shirt",
+    "product_category": "T-Shirt",
+    "price": 51.0,
+    "purchase_date": "2026-07-27",
+    "status": "processing",
+    "final_sale": false,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-07-31",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_spots",
+      "source_image_id": "S004",
+      "image_path": "data/Week4_damage_dataset_v1/images/spots_35/spot_004.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD040",
+    "product_name": "Blue Jacket",
+    "product_category": "Jacket",
+    "price": 220.0,
+    "purchase_date": "2026-07-30",
+    "status": "delivered",
+    "final_sale": false,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-08-03",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_spots",
+      "source_image_id": "S005",
+      "image_path": "data/Week4_damage_dataset_v1/images/spots_35/spot_005.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD041",
+    "product_name": "Green Hoodie",
+    "product_category": "Hoodie",
+    "price": 99.0,
+    "purchase_date": "2026-08-02",
+    "status": "delivered",
+    "final_sale": false,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-08-06",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_spots",
+      "source_image_id": "S006",
+      "image_path": "data/Week4_damage_dataset_v1/images/spots_35/spot_006.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD042",
+    "product_name": "Red Jacket",
+    "product_category": "Jacket",
+    "price": 157.0,
+    "purchase_date": "2026-08-05",
+    "status": "delivered",
+    "final_sale": false,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-08-09",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_spots",
+      "source_image_id": "S007",
+      "image_path": "data/Week4_damage_dataset_v1/images/spots_35/spot_007.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD043",
+    "product_name": "Black Hoodie",
+    "product_category": "Hoodie",
+    "price": 101.0,
+    "purchase_date": "2026-08-08",
+    "status": "delivered",
+    "final_sale": false,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-08-12",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_spots",
+      "source_image_id": "S008",
+      "image_path": "data/Week4_damage_dataset_v1/images/spots_35/spot_008.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD044",
+    "product_name": "Navy T-Shirt",
+    "product_category": "T-Shirt",
+    "price": 58.0,
+    "purchase_date": "2026-08-11",
+    "status": "delivered",
+    "final_sale": true,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-08-15",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_spots",
+      "source_image_id": "S009",
+      "image_path": "data/Week4_damage_dataset_v1/images/spots_35/spot_009.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD045",
+    "product_name": "Brown Jacket",
+    "product_category": "Jacket",
+    "price": 189.0,
+    "purchase_date": "2026-08-14",
+    "status": "delivered",
+    "final_sale": false,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-08-18",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_spots",
+      "source_image_id": "S010",
+      "image_path": "data/Week4_damage_dataset_v1/images/spots_35/spot_010.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD046",
+    "product_name": "Cream Hoodie",
+    "product_category": "Hoodie",
+    "price": 114.0,
+    "purchase_date": "2026-08-17",
+    "status": "delivered",
+    "final_sale": false,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-08-21",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_spots",
+      "source_image_id": "S011",
+      "image_path": "data/Week4_damage_dataset_v1/images/spots_35/spot_011.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD047",
+    "product_name": "Yellow T-Shirt",
+    "product_category": "T-Shirt",
+    "price": 47.0,
+    "purchase_date": "2026-08-20",
+    "status": "delivered",
+    "final_sale": false,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-08-24",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_spots",
+      "source_image_id": "S012",
+      "image_path": "data/Week4_damage_dataset_v1/images/spots_35/spot_012.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD048",
+    "product_name": "Leather Jacket",
+    "product_category": "Jacket",
+    "price": 511.0,
+    "purchase_date": "2026-08-23",
+    "status": "delivered",
+    "final_sale": false,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-08-27",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_spots",
+      "source_image_id": "S013",
+      "image_path": "data/Week4_damage_dataset_v1/images/spots_35/spot_013.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD049",
+    "product_name": "Black Jacket",
+    "product_category": "Jacket",
+    "price": 145.0,
+    "purchase_date": "2026-08-26",
+    "status": "delivered",
+    "final_sale": false,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-08-30",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_spots",
+      "source_image_id": "S014",
+      "image_path": "data/Week4_damage_dataset_v1/images/spots_35/spot_014.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD050",
+    "product_name": "Grey Hoodie",
+    "product_category": "Hoodie",
+    "price": 79.0,
+    "purchase_date": "2026-06-15",
+    "status": "delivered",
+    "final_sale": false,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-06-19",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_spots",
+      "source_image_id": "S015",
+      "image_path": "data/Week4_damage_dataset_v1/images/spots_35/spot_015.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD051",
+    "product_name": "White T-Shirt",
+    "product_category": "T-Shirt",
+    "price": 39.0,
+    "purchase_date": "2026-06-18",
+    "status": "cancelled",
+    "final_sale": false,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-06-22",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_spots",
+      "source_image_id": "S016",
+      "image_path": "data/Week4_damage_dataset_v1/images/spots_35/spot_016.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD052",
+    "product_name": "Blue Jacket",
+    "product_category": "Jacket",
+    "price": 228.0,
+    "purchase_date": "2026-06-21",
+    "status": "processing",
+    "final_sale": false,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-06-25",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_spots",
+      "source_image_id": "S017",
+      "image_path": "data/Week4_damage_dataset_v1/images/spots_35/spot_017.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD053",
+    "product_name": "Green Hoodie",
+    "product_category": "Hoodie",
+    "price": 107.0,
+    "purchase_date": "2026-06-24",
+    "status": "delivered",
+    "final_sale": false,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-06-28",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_spots",
+      "source_image_id": "S018",
+      "image_path": "data/Week4_damage_dataset_v1/images/spots_35/spot_018.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD054",
+    "product_name": "Red Jacket",
+    "product_category": "Jacket",
+    "price": 165.0,
+    "purchase_date": "2026-06-27",
+    "status": "delivered",
+    "final_sale": false,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-07-01",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_spots",
+      "source_image_id": "S019",
+      "image_path": "data/Week4_damage_dataset_v1/images/spots_35/spot_019.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD055",
+    "product_name": "Black Hoodie",
+    "product_category": "Hoodie",
+    "price": 89.0,
+    "purchase_date": "2026-06-30",
+    "status": "delivered",
+    "final_sale": true,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-07-04",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_spots",
+      "source_image_id": "S020",
+      "image_path": "data/Week4_damage_dataset_v1/images/spots_35/spot_020.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD056",
+    "product_name": "Navy T-Shirt",
+    "product_category": "T-Shirt",
+    "price": 46.0,
+    "purchase_date": "2026-07-03",
+    "status": "delivered",
+    "final_sale": false,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-07-07",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_spots",
+      "source_image_id": "S021",
+      "image_path": "data/Week4_damage_dataset_v1/images/spots_35/spot_021.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD057",
+    "product_name": "Brown Jacket",
+    "product_category": "Jacket",
+    "price": 197.0,
+    "purchase_date": "2026-07-06",
+    "status": "delivered",
+    "final_sale": false,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-07-10",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_spots",
+      "source_image_id": "S022",
+      "image_path": "data/Week4_damage_dataset_v1/images/spots_35/spot_022.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD058",
+    "product_name": "Cream Hoodie",
+    "product_category": "Hoodie",
+    "price": 122.0,
+    "purchase_date": "2026-07-09",
+    "status": "delivered",
+    "final_sale": false,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-07-13",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_spots",
+      "source_image_id": "S023",
+      "image_path": "data/Week4_damage_dataset_v1/images/spots_35/spot_023.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD059",
+    "product_name": "Yellow T-Shirt",
+    "product_category": "T-Shirt",
+    "price": 55.0,
+    "purchase_date": "2026-07-12",
+    "status": "delivered",
+    "final_sale": false,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-07-16",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_spots",
+      "source_image_id": "S024",
+      "image_path": "data/Week4_damage_dataset_v1/images/spots_35/spot_024.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD060",
+    "product_name": "Leather Jacket",
+    "product_category": "Jacket",
+    "price": 499.0,
+    "purchase_date": "2026-07-15",
+    "status": "delivered",
+    "final_sale": false,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-07-19",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_spots",
+      "source_image_id": "S025",
+      "image_path": "data/Week4_damage_dataset_v1/images/spots_35/spot_025.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD061",
+    "product_name": "Black Jacket",
+    "product_category": "Jacket",
+    "price": 133.0,
+    "purchase_date": "2026-07-18",
+    "status": "delivered",
+    "final_sale": false,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-07-22",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_spots",
+      "source_image_id": "S026",
+      "image_path": "data/Week4_damage_dataset_v1/images/spots_35/spot_026.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD062",
+    "product_name": "Grey Hoodie",
+    "product_category": "Hoodie",
+    "price": 87.0,
+    "purchase_date": "2026-07-21",
+    "status": "delivered",
+    "final_sale": false,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-07-25",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_spots",
+      "source_image_id": "S027",
+      "image_path": "data/Week4_damage_dataset_v1/images/spots_35/spot_027.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD063",
+    "product_name": "White T-Shirt",
+    "product_category": "T-Shirt",
+    "price": 47.0,
+    "purchase_date": "2026-07-24",
+    "status": "delivered",
+    "final_sale": false,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-07-28",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_spots",
+      "source_image_id": "S028",
+      "image_path": "data/Week4_damage_dataset_v1/images/spots_35/spot_028.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD064",
+    "product_name": "Blue Jacket",
+    "product_category": "Jacket",
+    "price": 236.0,
+    "purchase_date": "2026-07-27",
+    "status": "delivered",
+    "final_sale": false,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-07-31",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_spots",
+      "source_image_id": "S029",
+      "image_path": "data/Week4_damage_dataset_v1/images/spots_35/spot_029.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD065",
+    "product_name": "Green Hoodie",
+    "product_category": "Hoodie",
+    "price": 95.0,
+    "purchase_date": "2026-07-30",
+    "status": "processing",
+    "final_sale": false,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-08-03",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_spots",
+      "source_image_id": "S030",
+      "image_path": "data/Week4_damage_dataset_v1/images/spots_35/spot_030.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD066",
+    "product_name": "Red Jacket",
+    "product_category": "Jacket",
+    "price": 153.0,
+    "purchase_date": "2026-08-02",
+    "status": "delivered",
+    "final_sale": true,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-08-06",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_spots",
+      "source_image_id": "S031",
+      "image_path": "data/Week4_damage_dataset_v1/images/spots_35/spot_031.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD067",
+    "product_name": "Black Hoodie",
+    "product_category": "Hoodie",
+    "price": 97.0,
+    "purchase_date": "2026-08-05",
+    "status": "delivered",
+    "final_sale": false,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-08-09",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_spots",
+      "source_image_id": "S032",
+      "image_path": "data/Week4_damage_dataset_v1/images/spots_35/spot_032.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD068",
+    "product_name": "Navy T-Shirt",
+    "product_category": "T-Shirt",
+    "price": 54.0,
+    "purchase_date": "2026-08-08",
+    "status": "cancelled",
+    "final_sale": false,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-08-12",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_spots",
+      "source_image_id": "S033",
+      "image_path": "data/Week4_damage_dataset_v1/images/spots_35/spot_033.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD069",
+    "product_name": "Brown Jacket",
+    "product_category": "Jacket",
+    "price": 205.0,
+    "purchase_date": "2026-08-11",
+    "status": "delivered",
+    "final_sale": false,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-08-15",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_spots",
+      "source_image_id": "S034",
+      "image_path": "data/Week4_damage_dataset_v1/images/spots_35/spot_034.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  },
+  {
+    "order_id": "ORD070",
+    "product_name": "Cream Hoodie",
+    "product_category": "Hoodie",
+    "price": 110.0,
+    "purchase_date": "2026-08-14",
+    "status": "delivered",
+    "final_sale": false,
+    "data_type": "synthetic_order",
+    "retailer": "H&M Australia",
+    "delivery_date": "2026-08-18",
+    "image_evidence": {
+      "source_dataset": "Garment_condition_spots",
+      "source_image_id": "S035",
+      "image_path": "data/Week4_damage_dataset_v1/images/spots_35/spot_035.jpg",
+      "license": "CC BY 4.0",
+      "attribution": "CISUTAC project - Wargon Innovation",
+      "is_model_ground_truth": false
+    }
+  }
 ]

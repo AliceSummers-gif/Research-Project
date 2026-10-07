@@ -1,42 +1,89 @@
 [
   {
-    "policy_id": "POL-DAMAGE-30",
-    "title": "Damaged Clothing Refund Policy",
-    "policy_text": "Delivered clothing with a visible tear, hole, stain, or broken zip may be refunded within 30 days when image evidence matches the ordered product.",
-    "policy_source": "Mock Refund Policy, section 3.2",
-    "keywords": ["clothing", "jacket", "hoodie", "shirt", "damage", "tear", "hole", "stain", "zip"],
-    "refund_window_days": 30,
-    "requires_image": true,
-    "eligible_damage_types": ["tear", "hole", "stain", "broken_zip"]
+    "policy_id": "POL-DAMAGE-30", "retailer": "H&M Australia", "policy_kind": "retailer_policy",
+    "title": "H&M AU defective goods return",
+    "policy_text": "A defective item should be reported promptly. If H&M deems it defective, a full refund including the return fee is provided. Material, manufacturing and transit damage are covered by statutory guarantees.",
+    "policy_source": "H&M Australia Terms and Conditions, sections 5, 6 and 10",
+    "source_url": "https://www2.hm.com/en_au/customer-service/legal-and-privacy/terms-and-conditions.html",
+    "source_updated_date": "2025-10-29", "retrieved_date": "2026-10-07",
+    "keywords": ["clothing", "jacket", "hoodie", "shirt", "defective", "damage", "tear", "hole", "stain", "transit"],
+    "refund_window_days": 30, "requires_image": true,
+    "eligible_damage_types": ["tear", "hole", "stain", "spot", "broken_zip"],
+    "excluded_categories": [], "return_fee_aud": 0.0
   },
   {
-    "policy_id": "POL-WRONG-ITEM-14",
-    "title": "Wrong Item Refund Policy",
-    "policy_text": "An incorrect delivered item may be refunded within 14 days when the received product and order record do not match.",
-    "policy_source": "Mock Refund Policy, section 4.1",
+    "policy_id": "POL-WRONG-ITEM-14", "retailer": "H&M Australia", "policy_kind": "internal_review_rule",
+    "title": "H&M AU order mismatch review",
+    "policy_text": "A product mismatch is routed for order verification. This is an internal prototype control and is not presented as an H&M policy clause.",
+    "policy_source": "Project control linked to H&M AU order records",
+    "source_url": "https://www2.hm.com/en_au/customer-service/returns.html",
+    "source_updated_date": "2025-10-29", "retrieved_date": "2026-10-07",
     "keywords": ["wrong", "incorrect", "item", "product", "order", "mismatch"],
-    "refund_window_days": 14,
-    "requires_image": true,
-    "eligible_damage_types": ["wrong_item"]
+    "refund_window_days": 30, "requires_image": true,
+    "eligible_damage_types": ["wrong_item"], "excluded_categories": [], "return_fee_aud": null
   },
   {
-    "policy_id": "POL-NO-DAMAGE",
-    "title": "No Visible Damage Policy",
-    "policy_text": "A damage claim is not eligible for automatic refund when submitted evidence shows no visible damage.",
-    "policy_source": "Mock Refund Policy, section 3.5",
-    "keywords": ["no", "visible", "damage", "undamaged"],
-    "refund_window_days": 30,
-    "requires_image": true,
-    "eligible_damage_types": ["no_damage"]
+    "policy_id": "POL-NO-DAMAGE", "retailer": "H&M Australia", "policy_kind": "internal_review_rule",
+    "title": "Insufficient visual evidence review",
+    "policy_text": "When no visible defect is detected, the prototype does not auto-approve a damage refund and requests review or additional evidence.",
+    "policy_source": "Project evidence-safety rule; H&M source requires an item to be deemed defective",
+    "source_url": "https://www2.hm.com/en_au/customer-service/legal-and-privacy/terms-and-conditions.html",
+    "source_updated_date": "2025-10-29", "retrieved_date": "2026-10-07",
+    "keywords": ["no", "visible", "damage", "undamaged", "evidence"],
+    "refund_window_days": 30, "requires_image": true,
+    "eligible_damage_types": ["no_damage"], "excluded_categories": [], "return_fee_aud": null
   },
   {
-    "policy_id": "POL-FINAL-SALE",
-    "title": "Final Sale Exclusion",
-    "policy_text": "Final-sale products are excluded from refunds unless required by applicable consumer law.",
-    "policy_source": "Mock Refund Policy, section 6.1",
-    "keywords": ["final", "sale", "excluded", "exclusion"],
-    "refund_window_days": 0,
-    "requires_image": false,
-    "eligible_damage_types": []
+    "policy_id": "POL-FINAL-SALE", "retailer": "H&M Australia", "policy_kind": "retailer_policy",
+    "title": "H&M AU restricted return categories",
+    "policy_text": "Change-of-mind returns exclude personal-care products, underwear, swimwear, hosiery, perfume, beauty products and purchased paper bags. Statutory rights for defective goods remain available.",
+    "policy_source": "H&M Australia Terms and Conditions, section 6",
+    "source_url": "https://www2.hm.com/en_au/customer-service/legal-and-privacy/terms-and-conditions.html",
+    "source_updated_date": "2025-10-29", "retrieved_date": "2026-10-07",
+    "keywords": ["excluded", "underwear", "swimwear", "hosiery", "perfume", "beauty", "personal care"],
+    "refund_window_days": 30, "requires_image": false, "eligible_damage_types": [],
+    "excluded_categories": ["personal care", "underwear", "swimwear", "hosiery", "perfume", "beauty products", "paper bags"],
+    "return_fee_aud": 10.95
+  },
+  {
+    "policy_id": "ZARA-AU-DAMAGE-30", "retailer": "Zara Australia", "policy_kind": "retailer_policy",
+    "title": "Zara AU defective goods return",
+    "policy_text": "The standard deadline does not restrict items that are defective, not of acceptable quality, not fit for purpose or incorrectly described. The drop-off fee is not deducted for those items.",
+    "policy_source": "Zara Australia How to Return", "source_url": "https://www.zara.com/au/en/help-center/HowToReturn",
+    "retrieved_date": "2026-10-07",
+    "keywords": ["zara", "defective", "damage", "tear", "hole", "stain", "incorrectly described"],
+    "refund_window_days": 30, "requires_image": true,
+    "eligible_damage_types": ["tear", "hole", "stain", "spot", "broken_zip"],
+    "excluded_categories": [], "return_fee_aud": 0.0
+  },
+  {
+    "policy_id": "ZARA-AU-STANDARD-30", "retailer": "Zara Australia", "policy_kind": "retailer_policy",
+    "title": "Zara AU standard return conditions",
+    "policy_text": "Online returns must be managed within 30 days from shipping. Items must remain in original condition with labels and be returned in the same market.",
+    "policy_source": "Zara Australia How to Return", "source_url": "https://www.zara.com/au/en/help-center/HowToReturn",
+    "retrieved_date": "2026-10-07", "keywords": ["zara", "return", "original condition", "labels", "online"],
+    "refund_window_days": 30, "requires_image": false, "eligible_damage_types": [],
+    "excluded_categories": ["customisable items"], "return_fee_aud": 3.95
+  },
+  {
+    "policy_id": "UNIQLO-AU-DAMAGE-30", "retailer": "UNIQLO Australia", "policy_kind": "retailer_policy",
+    "title": "UNIQLO AU faulty item return",
+    "policy_text": "Faulty items may be assessed with a receipt or other proof of purchase, or referred to Customer Care for online handling. Australian Consumer Law rights continue to apply.",
+    "policy_source": "UNIQLO Australia Return Policy", "source_url": "https://faq-au.uniqlo.com/articles/en_US/FAQ/Return-Information",
+    "retrieved_date": "2026-10-07",
+    "keywords": ["uniqlo", "faulty", "defective", "damage", "tear", "hole", "stain", "proof of purchase"],
+    "refund_window_days": 30, "requires_image": true,
+    "eligible_damage_types": ["tear", "hole", "stain", "spot", "broken_zip"],
+    "excluded_categories": [], "return_fee_aud": 0.0
+  },
+  {
+    "policy_id": "UNIQLO-AU-STANDARD-30", "retailer": "UNIQLO Australia", "policy_kind": "retailer_policy",
+    "title": "UNIQLO AU online change-of-mind return",
+    "policy_text": "Online change-of-mind returns are accepted within 30 days of delivery or collection when items are unworn, unwashed and include original packaging and tags. Online refunds are returned by post.",
+    "policy_source": "UNIQLO Australia Return Policy", "source_url": "https://faq-au.uniqlo.com/articles/en_US/FAQ/Return-Information",
+    "retrieved_date": "2026-10-07", "keywords": ["uniqlo", "return", "unworn", "unwashed", "tags", "packaging"],
+    "refund_window_days": 30, "requires_image": false, "eligible_damage_types": [],
+    "excluded_categories": ["socks", "underwear", "swimwear", "personalised apparel", "altered apparel"],
+    "return_fee_aud": 8.0
   }
 ]
