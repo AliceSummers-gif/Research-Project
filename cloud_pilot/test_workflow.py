@@ -55,12 +55,24 @@ def test_reassessment_and_failure_preserve_record():
 
 def test_real_chain_keeps_missing_visual_evidence():
     from src.damage_detection.damage import DamageDetector, DamagePrediction
+
     class Backend:
         def predict(self, image_path):
-            return DamagePrediction(damage_type='stain_or_spot', confidence=0.9, rationale='Controlled test')
-    service = SessionRefundService(Runtime(detector=DamageDetector(backend=Backend())))
+            return DamagePrediction(
+                damage_type="stain_or_spot",
+                confidence=0.9,
+                rationale="Controlled test",
+            )
+
+    service = SessionRefundService(
+        Runtime(detector=DamageDetector(backend=Backend()))
+    )
     record = service.create(payload())
-    result = record['assessments'][0]['result']
-    assert 'claim_image_consistency' in result['missing_evidence']
-    assert result['member3']['policy_eligible'] is False
-    assert record['status'] == 'PENDING_REVIEW'
+    result = record["assessments"][0]["result"]
+
+    assert result["member2"]["claim_image_consistency"] == 0.0
+    assert "claim_image_consistency" not in result["missing_evidence"]
+    assert "detected_product" in result["missing_evidence"]
+    assert "damage_location" in result["missing_evidence"]
+    assert result["member3"]["policy_eligible"] is False
+    assert record["status"] == "PENDING_REVIEW"
